@@ -930,7 +930,7 @@ html[data-theme="light"] .stat-lbl{color:#475569}
   <div class="header-inner">
     <!-- Title row with theme toggle pinned right -->
     <div class="header-title-row">
-      <div id="firm_brand" style="font-size:10px;font-family:'IBM Plex Mono',monospace;color:rgba(255,255,255,0.55);letter-spacing:.5px;margin-bottom:2px"></div>
+
       <div class="header-title">TDS / TCS Rate Chart &amp; Calculator</div>
       <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Switch theme" style="position:absolute;right:0;top:50%;transform:translateY(-50%)">
         <span class="theme-icon" id="themeIcon">☀️</span>
@@ -1321,8 +1321,8 @@ function toggleTheme(){
 
 // ── LIVE DATA CONFIG — Update DATA_URL after SharePoint setup ────────────────
 const CONFIG = {
-  DATA_URL:    '',  // SharePoint CORS blocks direct fetch — using embedded data below  // e.g. https://yourcompany.sharepoint.com/sites/TDS-Tool/Public/data.json
-  FIRM_NAME:   'JDC And Associates LLP',
+  DATA_URL:    'https://raw.githubusercontent.com/JDCAssociates/tds-tool/main/data.json',  // e.g. https://yourcompany.sharepoint.com/sites/TDS-Tool/Public/data.json
+  FIRM_NAME:   '',
   FIRM_EMAIL:  'mail@jdcca.com',
   FIRM_PHONE:  '+91 XXXXX XXXXX',
   FIRM_WEBSITE:'www.jdcca.com',
@@ -1414,7 +1414,9 @@ async function init(){
   hideLoadingState();
   // Set firm branding
   if(CONFIG.FIRM_NAME && CONFIG.FIRM_NAME !== 'Your Firm Name'){
-    document.getElementById('firm_brand').textContent = CONFIG.FIRM_NAME.toUpperCase();
+    const fb = document.getElementById('firm_brand');
+    fb.textContent = CONFIG.FIRM_NAME;
+    fb.style.display = 'block';
   }
   renderTable(DATA);
   buildCalcDropdown();
@@ -1422,7 +1424,8 @@ async function init(){
   buildTyDropdown();
   // Auto-set current TY based on today
   const todayInit = new Date(); todayInit.setHours(0,0,0,0);
-  const defaultTY = getTaxYearFromDate(todayInit);
+  // Default to 2026-27 as this tool covers IT Act 2025 (effective 1 Apr 2026)
+  const defaultTY = '2026-27';
   setTaxYear(defaultTY, true);
   // Set today as default payment date
   const yyyy = todayInit.getFullYear();
