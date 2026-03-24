@@ -1,0 +1,2312 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TDS/TCS Master — Tax Year 2026-27 | IT Act 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+/* ══ THEME TOKENS ══════════════════════════════════════════════════════ */
+:root {
+  --radius: 10px; --radius-lg: 16px;
+  /* Semantic accent colours — same in both themes */
+  --accent: #3b82f6;
+  --accent2: #06b6d4;
+  --green: #22c55e; --red: #ef4444; --amber: #f59e0b;
+  /* transition for smooth theme switch */
+  --tx: all 0.22s ease;
+}
+
+/* ── DARK THEME (default) ── */
+html[data-theme="dark"] {
+  --bg: #0b0f1a;
+  --surface: #111827;
+  --surface2: #1a2235;
+  --border: #1e2d42;
+  --border2: #243247;
+  --text: #e2e8f0;
+  --text-inv: #0f172a;
+  --muted: #64748b;
+  --header-bg1: #0a1628;
+  --header-bg2: #0f2040;
+  --header-bg3: #091529;
+  --thead-bg: #0a1628;
+  --panel-hdr1: #0a1628;
+  --panel-hdr2: #0f2040;
+  --old-sec-bg: #0f172a;
+  --old-sec-border: #1e293b;
+  --old-sec-color: #94a3b8;
+  --mark-bg: #1e3a5f;
+  --mark-color: #93c5fd;
+  --td-code-color: #e2e8f0;
+  --calc-title-color: #f1f5f9;
+  --thresh-color: #67e8f9;
+  --thresh-bg: rgba(6,182,212,0.08);
+  --thresh-border: rgba(6,182,212,0.25);
+  --form-color: #a78bfa;
+  --form-bg: rgba(139,92,246,0.10);
+  --oldsec-color: #94a3b8;
+  --row-even: #111827;
+  --row-odd: #0f1623;
+  --row-hover: #1a2235;
+  --app-yes-bg: #052e16; --app-yes-border: #16a34a; --app-yes-color: #86efac;
+  --app-no-bg: #200a0a; --app-no-border: #991b1b; --app-no-color: #fca5a5;
+  --res-hi-bg: #200a0a; --res-hi2-bg: #0a2010;
+  --badge-blue-bg: #1e3a5f; --badge-blue-border: #3b82f6; --badge-blue-color: #93c5fd;
+  --badge-green-bg: #052e16; --badge-green-border: #16a34a; --badge-green-color: #86efac;
+  --badge-amber-bg: #1c1200; --badge-amber-border: #d97706; --badge-amber-color: #fcd34d;
+  --radio-active-bg: #1e3a5f; --radio-active-color: #93c5fd;
+  --sal: #10b981; --sal-bg: #052e16; --sal-border: #065f46;
+  --res: #3b82f6; --res-bg: #0f1f3d; --res-border: #1e3a5f;
+  --nr: #06b6d4;  --nr-bg:  #0a2535; --nr-border: #0e4863;
+  --any: #f59e0b; --any-bg: #1c1200; --any-border: #713f12;
+  --tcs: #f43f5e; --tcs-bg: #1f0813; --tcs-border: #881337;
+  --note-color: #fcd34d;
+  --scrollbar-bg: #0b0f1a;
+  --scrollbar-thumb: #243247;
+}
+
+/* ── LIGHT THEME ── */
+html[data-theme="light"] {
+  --bg: #f0f4f8;
+  --surface: #ffffff;
+  --surface2: #f8fafc;
+  --border: #e2e8f0;
+  --border2: #cbd5e1;
+  --text: #0f172a;
+  --text-inv: #ffffff;
+  --muted: #64748b;
+  --header-bg1: #1e3a5f;
+  --header-bg2: #1d4ed8;
+  --header-bg3: #1e3a5f;
+  --thead-bg: #1e3a5f;
+  --panel-hdr1: #1e3a5f;
+  --panel-hdr2: #1d4ed8;
+  --old-sec-bg: #f1f5f9;
+  --old-sec-border: #cbd5e1;
+  --old-sec-color: #475569;
+  --mark-bg: #bfdbfe;
+  --mark-color: #1d4ed8;
+  --td-code-color: #0f172a;
+  --calc-title-color: #0f172a;
+  --thresh-color: #0e7490;
+  --thresh-bg: rgba(6,182,212,0.07);
+  --thresh-border: rgba(6,182,212,0.30);
+  --form-color: #7c3aed;
+  --form-bg: rgba(124,58,237,0.08);
+  --oldsec-color: #475569;
+  --row-even: #ffffff;
+  --row-odd: #f8fafc;
+  --row-hover: #eff6ff;
+  --app-yes-bg: #f0fdf4; --app-yes-border: #16a34a; --app-yes-color: #15803d;
+  --app-no-bg: #fff1f2; --app-no-border: #f43f5e; --app-no-color: #be123c;
+  --res-hi-bg: #fff1f2; --res-hi2-bg: #f0fdf4;
+  --badge-blue-bg: #eff6ff; --badge-blue-border: #3b82f6; --badge-blue-color: #1d4ed8;
+  --badge-green-bg: #f0fdf4; --badge-green-border: #16a34a; --badge-green-color: #15803d;
+  --badge-amber-bg: #fffbeb; --badge-amber-border: #d97706; --badge-amber-color: #92400e;
+  --radio-active-bg: #eff6ff; --radio-active-color: #1d4ed8;
+  --sal: #059669; --sal-bg: #ecfdf5; --sal-border: #6ee7b7;
+  --res: #2563eb; --res-bg: #eff6ff; --res-border: #bfdbfe;
+  --nr: #0891b2;  --nr-bg:  #ecfeff; --nr-border: #a5f3fc;
+  --any: #d97706; --any-bg: #fffbeb; --any-border: #fde68a;
+  --tcs: #e11d48; --tcs-bg: #fff1f2; --tcs-border: #fecdd3;
+  --note-color: #92400e;
+  --scrollbar-bg: #f0f4f8;
+  --scrollbar-thumb: #cbd5e1;
+}
+
+/* ── Apply theme vars to elements ── */
+* { transition: background-color 0.22s ease, border-color 0.22s ease, color 0.22s ease, box-shadow 0.22s ease; }
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+
+/* ── HEADER ── */
+.header{
+  background:linear-gradient(135deg,var(--header-bg1) 0%,var(--header-bg2) 40%,var(--header-bg3) 100%);
+  border-bottom:1px solid rgba(255,255,255,0.12);
+  padding:12px 32px 12px;
+  position:sticky;top:0;z-index:100;
+  backdrop-filter:blur(12px);
+}
+.header-inner{
+  max-width:1600px;margin:0 auto;
+  display:flex;flex-direction:column;align-items:center;
+  gap:0;
+}
+.header-title-row{
+  display:flex;align-items:center;justify-content:center;
+  width:100%;position:relative;margin-bottom:4px;
+}
+.header-title{
+  font-family:'Playfair Display',serif;font-size:26px;font-weight:700;
+  color:#ffffff;letter-spacing:-0.4px;
+  text-shadow:0 2px 12px rgba(0,0,0,.45);
+  margin-bottom:4px;
+}
+.header-act{
+  font-size:13px;
+  font-weight:500;
+  color:rgba(255,255,255,0.88);
+  font-family:'DM Sans',sans-serif;
+  letter-spacing:.3px;
+  margin-bottom:0;
+  display:flex;align-items:center;justify-content:center;
+  flex-wrap:wrap;gap:4px;
+}
+.header-note{
+  font-size:10.5px;
+  color:rgba(255,255,255,0.50);
+  font-family:'IBM Plex Mono',monospace;
+  letter-spacing:.2px;
+  white-space:nowrap;
+}
+.header-tabs-row{
+  display:flex;flex-direction:row;align-items:center;
+  justify-content:center;gap:16px;
+  width:100%;flex-wrap:wrap;
+}
+.badge-row{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto}
+.badge{padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;font-family:'IBM Plex Mono',monospace;border:1px solid}
+.badge-blue{background:var(--badge-blue-bg);border-color:var(--badge-blue-border);color:var(--badge-blue-color)}
+.badge-green{background:var(--badge-green-bg);border-color:var(--badge-green-border);color:var(--badge-green-color)}
+.badge-amber{background:var(--badge-amber-bg);border-color:var(--badge-amber-border);color:var(--badge-amber-color)}
+
+/* ── TABS ── */
+.tabs{display:flex;gap:4px;background:rgba(0,0,0,0.22);border-radius:12px;padding:5px;width:fit-content}
+.tab{padding:10px 30px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;border:none;background:transparent;color:rgba(255,255,255,0.65)}
+
+/* ── TAX YEAR SELECTOR ── */
+.ty-bar{ display:none }
+.ty-label{font-size:10px;font-family:'IBM Plex Mono',monospace;color:rgba(255,255,255,0.50);letter-spacing:.5px;text-transform:uppercase;white-space:nowrap}
+
+/* ── TAX YEAR DROPDOWN IN HEADER ── */
+.ty-dd{position:relative;z-index:200}
+.ty-dd-selected{
+  display:flex;align-items:center;gap:6px;
+  padding:4px 12px;border-radius:12px;
+  border:1.5px solid rgba(255,255,255,0.25);
+  background:rgba(255,255,255,0.10);
+  color:#fff;font-size:11px;font-weight:700;
+  font-family:'IBM Plex Mono',monospace;
+  cursor:pointer;transition:all .18s;white-space:nowrap;
+  min-width:110px;justify-content:space-between;
+}
+.ty-dd-selected:hover{background:rgba(255,255,255,0.18);border-color:rgba(255,255,255,0.5)}
+.ty-dd.open .ty-dd-selected{background:var(--accent);border-color:var(--accent);box-shadow:0 2px 10px rgba(37,99,235,.45)}
+.ty-dd-arrow{font-size:10px;transition:transform .2s;opacity:.8}
+.ty-dd.open .ty-dd-arrow{transform:rotate(180deg)}
+.ty-dd-panel{
+  position:absolute;top:calc(100% + 6px);left:50%;transform:translateX(-50%);
+  min-width:160px;background:var(--surface);
+  border:1.5px solid var(--accent);border-radius:10px;
+  box-shadow:0 8px 28px rgba(0,0,0,.35);overflow:hidden;z-index:999;
+}
+.ty-dd-search{
+  width:100%;padding:8px 12px;box-sizing:border-box;
+  background:linear-gradient(135deg,#1e3a5f,#1d4ed8);
+  border:none;border-bottom:1px solid var(--border);outline:none;
+  font-size:12px;color:#fff;font-family:'IBM Plex Mono',monospace;
+}
+.ty-dd-search::placeholder{color:rgba(255,255,255,0.5)}
+.ty-dd-list{max-height:200px;overflow-y:auto}
+.ty-dd-item{
+  padding:8px 14px;cursor:pointer;font-size:11.5px;font-weight:700;
+  font-family:'IBM Plex Mono',monospace;color:var(--text);
+  border-bottom:1px solid var(--border);transition:background .12s;
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+}
+.ty-dd-item:last-child{border-bottom:none}
+.ty-dd-item:hover{background:var(--row-hover)}
+.ty-dd-item.active{background:var(--res-bg);color:var(--accent)}
+.ty-dd-item .ty-status{font-size:9px;font-weight:700;padding:1px 6px;border-radius:8px;white-space:nowrap}
+.ty-status-current{background:var(--res-bg);color:var(--accent);border:1px solid var(--accent)}
+.ty-status-future{background:var(--surface2);color:var(--muted);border:1px solid var(--border)}
+
+/* ── DATE CALCULATOR CARDS ── */
+.date-result-box{
+  background:var(--surface2);border:1px solid var(--border);
+  border-radius:10px;padding:14px 16px;margin-top:14px;
+}
+.date-result-box.overdue{border-color:rgba(239,68,68,.5);background:var(--app-no-bg)}
+.date-result-box.ok{border-color:rgba(34,197,94,.4);background:var(--app-yes-bg)}
+.date-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:4px}
+.date-row:last-child{border-bottom:none}
+.date-key{font-size:10px;font-weight:700;font-family:'IBM Plex Mono',monospace;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.date-val{font-size:12px;font-weight:700;font-family:'IBM Plex Mono',monospace;color:var(--text)}
+.date-val.warn{color:var(--red)}
+.date-val.ok{color:var(--green)}
+.date-val.amber{color:var(--amber)}
+.interest-box{
+  margin-top:10px;padding:12px 14px;border-radius:8px;
+  background:rgba(239,68,68,.1);border:1.5px solid rgba(239,68,68,.35);
+}
+.interest-title{font-size:10px;font-weight:700;font-family:'IBM Plex Mono',monospace;color:var(--red);letter-spacing:.5px;margin-bottom:6px}
+.interest-row{display:flex;justify-content:space-between;font-size:11.5px;padding:3px 0}
+.interest-key{color:var(--muted)}
+.interest-val{font-weight:700;color:var(--red);font-family:'IBM Plex Mono',monospace}
+.tab.active{background:var(--accent);color:#fff;box-shadow:0 2px 8px rgba(59,130,246,.4)}
+.tab:hover:not(.active){background:rgba(255,255,255,0.12);color:#fff}
+
+/* ── MAIN LAYOUT ── */
+.main{padding:20px 28px;max-width:1600px;margin:0 auto}
+.table-content{padding:16px 28px 24px;max-width:1600px;margin:0 auto}
+
+/* ── FILTER BAR ── */
+.filter-bar{
+  display:flex;gap:12px;align-items:center;flex-wrap:wrap;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-top:3px solid var(--accent);
+  border-radius:0;
+  padding:10px 28px;
+  margin-bottom:0;
+  box-shadow:0 3px 14px rgba(0,0,0,.18);
+  position:sticky;
+  top:var(--header-h, 108px);
+  z-index:90;
+}
+.search-wrap{position:relative;flex:1;min-width:280px}
+.search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:15px}
+.search-input{
+  width:100%;padding:10px 12px 10px 36px;
+  background:var(--bg);border:1.5px solid var(--border2);border-radius:8px;
+  color:var(--text);font-size:13px;font-family:'DM Sans',sans-serif;
+  transition:border-color .2s,box-shadow .2s;outline:none;
+  box-shadow:inset 0 1px 3px rgba(0,0,0,.12);
+}
+.search-input:focus{border-color:var(--accent)}
+.search-input::placeholder{color:var(--muted)}
+.filter-chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{
+  padding:6px 15px;border-radius:20px;font-size:11.5px;font-weight:700;
+  cursor:pointer;border:1.5px solid transparent;transition:all .18s;
+  font-family:'IBM Plex Mono',monospace;letter-spacing:.2px;
+  user-select:none;
+}
+.chip:hover{transform:translateY(-1px);box-shadow:0 3px 8px rgba(0,0,0,.2)}
+.chip-all{background:var(--surface2);border-color:var(--border2);color:var(--muted)}
+.chip-all.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.chip-sal{background:var(--sal-bg);border-color:var(--sal-border);color:var(--sal)}
+.chip-sal.active{background:var(--sal);border-color:var(--sal);color:#000}
+.chip-res{background:var(--res-bg);border-color:var(--res-border);color:var(--res)}
+.chip-res.active{background:var(--res);border-color:var(--res);color:#fff}
+.chip-nr{background:var(--nr-bg);border-color:var(--nr-border);color:var(--nr)}
+.chip-nr.active{background:var(--nr);border-color:var(--nr);color:#000}
+.chip-any{background:var(--any-bg);border-color:var(--any-border);color:var(--any)}
+.chip-any.active{background:var(--any);border-color:var(--any);color:#000}
+.chip-tcs{background:var(--tcs-bg);border-color:var(--tcs-border);color:var(--tcs)}
+.chip-tcs.active{background:var(--tcs);border-color:var(--tcs);color:#fff}
+.results-count{margin-left:auto;font-size:12px;color:var(--muted);font-family:'IBM Plex Mono',monospace;white-space:nowrap}
+.print-btn{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:8px 18px;border-radius:10px;
+  background:linear-gradient(145deg,#dc2626,#b91c1c,#991b1b);
+  background-size:200% 100%;
+  border:1px solid rgba(255,255,255,0.15);
+  color:#fff;font-size:12px;font-weight:700;letter-spacing:.2px;
+  cursor:pointer;font-family:'DM Sans',sans-serif;
+  transition:all .22s ease;
+  box-shadow:0 2px 10px rgba(220,38,38,.4),inset 0 1px 0 rgba(255,255,255,.18);
+  white-space:nowrap;flex-shrink:0;position:relative;overflow:hidden;
+}
+.print-btn::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:45%;
+  background:linear-gradient(180deg,rgba(255,255,255,.14),transparent);
+  pointer-events:none;
+}
+.print-btn:hover{
+  background-position:right center;
+  box-shadow:0 5px 20px rgba(220,38,38,.55),inset 0 1px 0 rgba(255,255,255,.18);
+  transform:translateY(-2px);
+}
+.print-btn:active{transform:translateY(0);box-shadow:0 2px 8px rgba(220,38,38,.35)}
+.print-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+
+/* ── TABLE ── */
+.table-wrap{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius-lg);overflow:hidden;
+  box-shadow:0 4px 24px rgba(0,0,0,.14);
+}
+.table-scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead th{
+  background:var(--thead-bg);padding:11px 14px;text-align:left;
+  font-size:10.5px;font-weight:700;color:rgba(255,255,255,0.6);letter-spacing:.8px;
+  text-transform:uppercase;border-bottom:2px solid rgba(59,130,246,0.35);
+  white-space:nowrap;font-family:'IBM Plex Mono',monospace;
+}
+thead th:first-child{border-radius:0}
+tbody tr{border-bottom:1px solid var(--border);transition:background .15s,box-shadow .15s;cursor:pointer}
+tbody tr:last-child{border-bottom:none}
+tbody tr:nth-child(even){background:var(--row-even)}
+tbody tr:nth-child(odd){background:var(--row-odd)}
+tbody tr:hover{background:var(--row-hover)!important;box-shadow:inset 3px 0 0 var(--accent)}
+tbody tr.selected{background:#0f2040!important}
+td{padding:12px 14px;vertical-align:middle}
+/* ── TABLE CELL TYPOGRAPHY ── */
+.td-code{
+  font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;
+  color:var(--td-code-color);white-space:nowrap;letter-spacing:.3px;
+}
+.td-nature{
+  color:var(--text);line-height:1.5;max-width:260px;
+  font-size:13px;font-weight:400;
+}
+.td-sec{
+  font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  color:var(--text);font-weight:500;max-width:165px;word-break:break-word;
+  white-space:normal;line-height:1.4;opacity:0.85;
+}
+.td-rate{
+  font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:700;
+  white-space:normal;max-width:135px;word-break:break-word;line-height:1.45;
+}
+.rate-low{color:#34d399}.rate-med{color:#fbbf24}.rate-high{color:#f87171}.rate-slab{color:#c084fc}
+
+/* Threshold — styled pill */
+.td-thresh{
+  font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;
+  color:var(--thresh-color);white-space:nowrap;
+  background:var(--thresh-bg);border:1px solid var(--thresh-border);
+  border-radius:6px;padding:3px 8px;display:inline-block;
+}
+
+/* Form — styled pill */
+.td-form{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;
+  color:var(--form-color);white-space:nowrap;
+  background:var(--form-bg);border-radius:5px;
+  padding:2px 7px;display:inline-block;letter-spacing:.2px;
+}
+
+/* type badge */
+.type-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:3px 9px;border-radius:12px;font-size:10px;font-weight:700;
+  font-family:'IBM Plex Mono',monospace;border:1px solid;white-space:nowrap
+}
+.tb-sal{background:var(--sal-bg);border-color:var(--sal-border);color:var(--sal)}
+.tb-res{background:var(--res-bg);border-color:var(--res-border);color:var(--res)}
+.tb-nr{background:var(--nr-bg);border-color:var(--nr-border);color:var(--nr)}
+.tb-any{background:var(--any-bg);border-color:var(--any-border);color:var(--any)}
+.tb-tcs{background:var(--tcs-bg);border-color:var(--tcs-border);color:var(--tcs)}
+
+/* ── DETAIL PANEL ── */
+.detail-panel{
+  position:fixed;right:0;top:0;height:100vh;width:400px;
+  background:var(--surface);border-left:1px solid var(--border2);
+  padding:0;z-index:200;
+  transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);
+  overflow-y:auto;display:flex;flex-direction:column;
+}
+.detail-panel.open{transform:translateX(0)}
+.panel-header{
+  padding:20px 22px 16px;border-bottom:1px solid var(--border);
+  background:linear-gradient(135deg,var(--panel-hdr1),var(--panel-hdr2));position:sticky;top:0;z-index:1;
+}
+.panel-close{
+  position:absolute;top:16px;right:16px;background:var(--surface2);
+  border:1px solid var(--border2);border-radius:6px;padding:4px 8px;
+  color:var(--muted);cursor:pointer;font-size:16px;transition:color .15s;
+}
+.panel-close:hover{color:#fff}
+.panel-calc-btn{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;margin-top:14px;padding:11px 16px;
+  background:linear-gradient(135deg,#1d4ed8,#2563eb);
+  border:none;border-radius:9px;
+  color:#fff;font-size:13px;font-weight:700;
+  cursor:pointer;letter-spacing:.2px;
+  font-family:'DM Sans',sans-serif;
+  transition:opacity .18s,transform .18s,box-shadow .18s;
+  box-shadow:0 3px 12px rgba(37,99,235,.40);
+}
+.panel-calc-btn:hover{
+  opacity:.92;transform:translateY(-1px);
+  box-shadow:0 5px 18px rgba(37,99,235,.55);
+}
+.panel-calc-btn:active{transform:translateY(0);opacity:1}
+.panel-code{
+  font-family:'IBM Plex Mono',monospace;font-size:32px;font-weight:700;
+  color:#ffffff;line-height:1;letter-spacing:-.5px;
+  text-shadow:0 2px 8px rgba(0,0,0,.3);
+}
+.panel-nature{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.5}
+.panel-body{padding:20px 22px;flex:1}
+.detail-row{margin-bottom:16px}
+.detail-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--muted);font-family:'IBM Plex Mono',monospace;margin-bottom:4px}
+.detail-value{font-size:13px;color:var(--text);line-height:1.5}
+.detail-value.mono{font-family:'IBM Plex Mono',monospace;font-size:13px}
+.detail-value.big{font-size:22px;font-weight:700;font-family:'IBM Plex Mono',monospace}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.detail-card{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:12px 14px}
+.detail-sep{border:none;border-top:1px solid var(--border);margin:16px 0}
+.note-box{background:var(--any-bg);border:1px solid var(--any-border);border-radius:8px;padding:12px 14px;font-size:12px;color:#fcd34d;line-height:1.6;font-family:'IBM Plex Mono',monospace}
+.old-sec-box{background:var(--old-sec-bg);border:1px solid var(--old-sec-border);border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:10px}
+.old-sec-label{font-size:10px;color:var(--muted);font-family:'IBM Plex Mono',monospace}
+.old-sec-val{font-size:13px;font-family:'IBM Plex Mono',monospace;color:var(--old-sec-color)}
+
+/* ── CALCULATOR TAB ── */
+.calc-layout{display:grid;grid-template-columns:420px 1fr;gap:24px}
+.calc-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius-lg);padding:24px;
+  box-shadow:0 4px 20px rgba(0,0,0,.15);
+}
+.calc-title{
+  font-size:17px;font-weight:700;color:var(--calc-title-color);
+  margin-bottom:20px;display:flex;align-items:center;gap:10px;
+  padding-bottom:14px;border-bottom:1px solid var(--border);
+  font-family:'DM Sans',sans-serif;letter-spacing:-.2px;
+}
+.form-group{margin-bottom:18px}
+.form-label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--accent2);font-family:'IBM Plex Mono',monospace;margin-bottom:6px;display:block}
+
+/* ── CUSTOM SEARCHABLE DROPDOWN ── */
+.sc-dropdown{position:relative;width:100%;z-index:50}
+.sc-selected{
+  display:flex;align-items:center;gap:8px;
+  padding:10px 13px;
+  background:var(--bg);border:1.5px solid var(--border2);border-radius:8px;
+  cursor:pointer;transition:border-color .2s,box-shadow .2s;
+  min-height:44px;
+}
+.sc-selected:hover{border-color:var(--accent)}
+.sc-dropdown.open .sc-selected{
+  border-color:var(--accent);
+  border-bottom-left-radius:0;border-bottom-right-radius:0;
+  box-shadow:0 -2px 8px rgba(59,130,246,.15);
+}
+.sc-sel-code{
+  font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;
+  color:var(--accent);white-space:nowrap;min-width:36px;
+}
+.sc-sel-nature{
+  font-size:12px;color:var(--text);flex:1;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.sc-arrow{
+  font-size:12px;color:var(--muted);transition:transform .2s;flex-shrink:0;
+}
+.sc-dropdown.open .sc-arrow{transform:rotate(180deg)}
+.sc-panel{
+  position:absolute;left:0;right:0;top:100%;
+  background:var(--surface);
+  border:1.5px solid var(--accent);border-top:none;
+  border-bottom-left-radius:10px;border-bottom-right-radius:10px;
+  box-shadow:0 8px 32px rgba(0,0,0,.28);
+  z-index:999;overflow:hidden;
+}
+.sc-search-wrap{
+  display:flex;align-items:center;gap:8px;
+  padding:11px 14px;
+  border-bottom:2px solid var(--accent);
+  background:linear-gradient(135deg,#1e3a5f,#1d4ed8);
+  position:sticky;top:0;z-index:1;
+  border-radius:0;
+}
+.sc-search-icon{font-size:14px;flex-shrink:0;color:rgba(255,255,255,0.8)}
+.sc-search{
+  flex:1;background:transparent;border:none;outline:none;
+  font-size:13px;color:#ffffff;font-family:'DM Sans',sans-serif;font-weight:500;
+}
+.sc-search::placeholder{color:rgba(255,255,255,0.55)}
+.sc-clear-btn{
+  background:none;border:none;color:rgba(255,255,255,0.65);cursor:pointer;
+  font-size:13px;padding:2px 6px;border-radius:4px;
+  transition:all .15s;flex-shrink:0;
+}
+.sc-clear-btn:hover{color:#fff;background:rgba(255,255,255,0.15)}
+.sc-count{
+  padding:5px 13px;font-size:10px;font-family:'IBM Plex Mono',monospace;
+  color:var(--muted);background:var(--surface);
+  border-bottom:1px solid var(--border);letter-spacing:.3px;
+}
+.sc-list{
+  max-height:320px;overflow-y:auto;
+  overscroll-behavior:contain;
+}
+.sc-item{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:9px 13px;cursor:pointer;
+  border-bottom:1px solid var(--border);
+  transition:background .12s;
+}
+.sc-item:last-child{border-bottom:none}
+.sc-item:hover,.sc-item.focused{background:var(--row-hover)}
+.sc-item.selected{background:var(--res-bg)!important}
+.sc-item-code{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;
+  color:var(--accent);white-space:nowrap;min-width:36px;padding-top:1px;
+}
+.sc-item-right{display:flex;flex-direction:column;gap:2px;flex:1}
+.sc-item-cat{
+  font-size:9.5px;font-weight:700;font-family:'IBM Plex Mono',monospace;
+  padding:1px 6px;border-radius:8px;border:1px solid;
+  white-space:nowrap;display:inline-block;width:fit-content;
+}
+.sc-item-nature{
+  font-size:12px;color:var(--text);line-height:1.45;
+  word-break:break-word;white-space:normal;
+}
+.sc-no-results{
+  padding:24px;text-align:center;color:var(--muted);
+  font-size:13px;font-family:'DM Sans',sans-serif;
+}
+/* light mode */
+html[data-theme="light"] .sc-panel{box-shadow:0 8px 32px rgba(0,0,0,.12)}
+html[data-theme="light"] .sc-search-wrap{background:linear-gradient(135deg,#1e3a5f,#1d4ed8)}
+html[data-theme="light"] .sc-selected{background:#fff}
+.form-select,.form-input{
+  width:100%;padding:10px 13px;background:var(--bg);
+  border:1.5px solid var(--border2);border-radius:8px;
+  color:var(--text);font-size:13px;font-family:'DM Sans',sans-serif;outline:none;
+  transition:border-color .2s,box-shadow .2s;appearance:none;
+  box-shadow:inset 0 1px 3px rgba(0,0,0,.1);
+}
+.form-select:focus,.form-input:focus{border-color:var(--accent)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.radio-group{display:flex;gap:10px}
+.radio-btn{
+  flex:1;padding:10px;border-radius:8px;border:1.5px solid var(--border2);
+  background:var(--bg);color:var(--muted);font-size:12px;font-weight:700;
+  cursor:pointer;text-align:center;transition:all .18s;
+  font-family:'DM Sans',sans-serif;letter-spacing:.1px;
+}
+.radio-btn:hover:not(.active){border-color:var(--accent);color:var(--text)}
+.radio-btn.active{border-color:var(--accent);background:var(--radio-active-bg);color:var(--radio-active-color)}
+.calc-btn{
+  width:100%;padding:13px;background:var(--accent);border:none;border-radius:10px;
+  color:#fff;font-size:14px;font-weight:700;cursor:pointer;transition:opacity .15s;
+  font-family:'DM Sans',sans-serif;margin-top:8px;
+}
+.calc-btn:hover{opacity:.88}
+/* Results */
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+.result-card{
+  background:var(--surface2);border:1px solid var(--border);
+  border-radius:10px;padding:18px 20px;position:relative;overflow:hidden;
+}
+.result-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--border);border-radius:10px 10px 0 0;
+}
+.result-card.highlight{border-color:rgba(239,68,68,.4);background:var(--res-hi-bg)}
+.result-card.highlight::before{background:var(--red)}
+.result-card.highlight2{border-color:rgba(34,197,94,.4);background:var(--res-hi2-bg)}
+.result-card.highlight2::before{background:var(--green)}
+.result-label{
+  font-size:10px;font-weight:700;color:var(--muted);
+  font-family:'IBM Plex Mono',monospace;text-transform:uppercase;
+  letter-spacing:.8px;margin-bottom:8px;
+}
+.result-value{font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:700;line-height:1}
+.result-value.red{color:var(--red)}.result-value.green{color:var(--green)}
+.result-value.amber{color:var(--amber)}.result-value.blue{color:var(--accent)}
+/* N/A state */
+.result-value-na{
+  font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;
+  color:var(--muted);letter-spacing:.5px;opacity:.7;
+}
+.applicability{
+  border-radius:10px;padding:14px 18px;font-size:13px;font-weight:600;
+  margin-bottom:18px;display:flex;align-items:center;gap:10px;
+  line-height:1.5;
+}
+.app-yes{background:var(--app-yes-bg);border:1.5px solid var(--app-yes-border);color:var(--app-yes-color)}
+.app-no{background:var(--app-no-bg);border:1.5px solid var(--app-no-border);color:var(--app-no-color)}
+.sc-warn{background:var(--any-bg);border:1.5px solid var(--any-border);border-radius:10px;padding:14px;font-size:12px;color:#fcd34d;line-height:1.6;margin-top:14px}
+.section-info-box{
+  background:var(--bg);border:1px solid var(--border);
+  border-left:3px solid var(--accent);
+  border-radius:0 10px 10px 0;padding:14px 16px;margin-bottom:18px;
+}
+.sib-row{display:flex;justify-content:space-between;align-items:flex-start;padding:5px 0;border-bottom:1px solid var(--border)}
+.sib-row:last-child{border-bottom:none}
+.sib-key{font-size:10.5px;font-weight:700;color:var(--muted);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.4px;padding-top:1px}
+.sib-val{font-size:12px;font-weight:600;color:var(--text);font-family:'IBM Plex Mono',monospace;text-align:right;max-width:58%;word-break:break-word;line-height:1.4}
+
+
+/* overlay */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:199;opacity:0;pointer-events:none;transition:opacity .3s}
+.overlay.show{opacity:1;pointer-events:all}
+
+/* empty */
+.empty{text-align:center;padding:60px 20px;color:var(--muted)}
+.empty-icon{font-size:48px;margin-bottom:16px}
+
+/* ── TABLE LEGEND ── */
+.table-legend{
+  display:flex;align-items:center;flex-wrap:wrap;gap:10px;
+  margin-top:12px;padding:10px 16px;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:10px;font-size:11px;
+}
+
+/* ── PAGE DISCLAIMER BAR ── */
+.page-disclaimer{
+  margin-top:14px;
+  background:linear-gradient(135deg,#0a1628 0%,#0f2040 60%,#0a1628 100%);
+  border:1px solid rgba(59,130,246,0.25);
+  border-left:4px solid var(--accent);
+  border-radius:10px;
+  padding:12px 18px;
+  display:flex;flex-direction:column;gap:5px;
+}
+html[data-theme="light"] .page-disclaimer{
+  background:linear-gradient(135deg,#eff6ff 0%,#dbeafe 60%,#eff6ff 100%);
+  border-color:rgba(59,130,246,0.3);
+  border-left:4px solid var(--accent);
+}
+.disc-row{display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap}
+.disc-badge{
+  font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:700;
+  padding:2px 8px;border-radius:10px;white-space:nowrap;flex-shrink:0;
+  background:rgba(59,130,246,0.18);border:1px solid rgba(59,130,246,0.4);
+  color:#93c5fd;margin-top:1px;
+}
+html[data-theme="light"] .disc-badge{
+  background:#dbeafe;border-color:#3b82f6;color:#1d4ed8;
+}
+.disc-text{font-size:11px;color:rgba(255,255,255,0.80);line-height:1.6;font-family:'DM Sans',sans-serif}
+html[data-theme="light"] .disc-text{color:#1e3a5f}
+.disc-text strong{color:#fff;font-weight:700}
+html[data-theme="light"] .disc-text strong{color:#1d4ed8}
+.disc-updated{
+  font-size:10px;font-family:'IBM Plex Mono',monospace;
+  color:rgba(255,255,255,0.45);margin-top:3px;
+  padding-top:6px;border-top:1px solid rgba(255,255,255,0.08);
+}
+html[data-theme="light"] .disc-updated{
+  color:#64748b;border-top-color:#cbd5e1;
+}
+.leg-item{display:flex;align-items:center;gap:6px;color:var(--text)}
+.leg-sep{color:var(--border2);font-size:14px;font-weight:300}
+
+/* panel tab nav */
+.panel-tabs{display:flex;gap:1px;background:var(--border);margin-bottom:20px;border-radius:8px;overflow:hidden}
+.panel-tab{flex:1;padding:9px;text-align:center;font-size:11px;font-weight:700;font-family:'IBM Plex Mono',monospace;cursor:pointer;background:var(--surface2);color:var(--muted);transition:all .15s}
+.panel-tab.active{background:var(--surface);color:#fff}
+
+/* highlight search */
+mark{background:var(--mark-bg);color:var(--mark-color);border-radius:2px;padding:0 2px}
+
+/* ── CESS BADGES ── */
+.cess-yes,.cess-nil,.cess-sal{
+  display:inline-block;padding:2px 8px;border-radius:10px;
+  font-size:10px;font-weight:700;font-family:'IBM Plex Mono',monospace;
+  white-space:nowrap;cursor:default;border:1px solid;
+}
+.cess-yes{background:var(--nr-bg);border-color:var(--nr-border);color:var(--nr)}
+.cess-sal{background:var(--sal-bg);border-color:var(--sal-border);color:var(--sal)}
+.cess-nil{background:var(--surface2);border-color:var(--border);color:var(--text);opacity:0.75}
+
+/* scrollbar */
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:var(--scrollbar-bg)}
+::-webkit-scrollbar-thumb{background:var(--scrollbar-thumb);border-radius:3px}
+
+/* ── THEME TOGGLE BUTTON ── */
+.theme-toggle{
+  display:flex;align-items:center;gap:7px;
+  padding:7px 16px;border-radius:22px;border:1.5px solid var(--border2);
+  background:var(--surface);color:var(--text);cursor:pointer;
+  font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;
+  white-space:nowrap;flex-shrink:0;
+  box-shadow:0 2px 8px rgba(0,0,0,.18);
+  transition:all 0.2s ease;
+}
+.theme-toggle:hover{
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(59,130,246,.18);
+}
+html[data-theme="light"] .theme-toggle{
+  background:#fff;
+  box-shadow:0 2px 8px rgba(0,0,0,.10);
+}
+.theme-icon{font-size:16px;line-height:1}
+.theme-label{letter-spacing:.01em}
+
+/* ── LIGHT MODE overrides for elements that need extra attention ── */
+html[data-theme="light"] .header{
+  background:linear-gradient(135deg,#1e3a5f 0%,#1d4ed8 40%,#1e3a5f 100%);
+  border-bottom:1px solid rgba(255,255,255,.15);
+}
+html[data-theme="light"] .header-title{color:#fff}
+html[data-theme="light"] .header-act{color:rgba(255,255,255,0.95)}
+html[data-theme="light"] .header-note{color:rgba(255,255,255,0.60)}
+html[data-theme="light"] .tab{color:rgba(255,255,255,0.65)}
+html[data-theme="light"] .tab:hover:not(.active){background:rgba(255,255,255,0.14);color:#fff}
+html[data-theme="light"] .tabs{background:rgba(0,0,0,0.20)}
+html[data-theme="light"] .theme-toggle{background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.35);color:#fff}
+html[data-theme="light"] .theme-toggle:hover{background:rgba(255,255,255,0.25);border-color:rgba(255,255,255,0.6)}
+html[data-theme="light"] [style*="color:var(--muted)"] { color: #475569 }
+html[data-theme="light"] .panel-code{color:#fff}
+html[data-theme="light"] .panel-close{background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.8)}
+html[data-theme="light"] .panel-close:hover{color:#fff}
+html[data-theme="light"] thead th{color:rgba(255,255,255,0.8)}
+html[data-theme="light"] tbody tr:hover{background:var(--row-hover)!important;box-shadow:inset 3px 0 0 var(--accent)}
+html[data-theme="light"] thead th{color:rgba(255,255,255,0.85);border-bottom:2px solid rgba(255,255,255,.2)}
+html[data-theme="light"] .bar-count{color:#0f172a}
+html[data-theme="light"] .note-box{background:#fffbeb;border-color:#fde68a;color:var(--note-color)}
+html[data-theme="light"] .sc-warn{background:#fffbeb;border-color:#fde68a;color:#92400e}
+html[data-theme="light"] mark{font-weight:600}
+html[data-theme="light"] .detail-sep{border-color:var(--border)}
+html[data-theme="light"] .sib-key{color:#475569}
+html[data-theme="light"] .result-label{color:#475569}
+html[data-theme="light"] .form-label{color:#475569}
+html[data-theme="light"] .detail-label{color:#475569}
+html[data-theme="light"] .old-sec-label{color:#475569}
+html[data-theme="light"] .panel-nature{color:rgba(255,255,255,0.75)}
+html[data-theme="light"] .search-input{background:#fff;border-color:#cbd5e1}
+html[data-theme="light"] .filter-bar{background:#ffffff;border-color:#e2e8f0}
+html[data-theme="light"] .table-legend{background:#fff}
+html[data-theme="light"] .table-content{background:var(--bg)}
+html[data-theme="light"] .bar-label{color:#475569}
+html[data-theme="light"] .stat-lbl{color:#475569}
+
+/* ════════════════════════════════════════════════════════
+   RESPONSIVE — TABLET (≤ 1024px)
+   ════════════════════════════════════════════════════════ */
+@media(max-width:1024px){
+  .calc-layout{grid-template-columns:1fr}
+  .detail-panel{width:min(480px,95vw)}
+  .table-content{padding:14px 20px 20px}
+  .main{padding:16px 20px}
+}
+
+/* ════════════════════════════════════════════════════════
+   RESPONSIVE — MOBILE (≤ 768px)
+   ════════════════════════════════════════════════════════ */
+@media(max-width:768px){
+  /* Header */
+  .header{padding:10px 16px 10px}
+  .header-title{font-size:18px;letter-spacing:-.2px}
+  .header-act{font-size:11.5px}
+  .header-tabs-row{gap:8px;flex-wrap:wrap;justify-content:center}
+  .header-note{font-size:9.5px;text-align:center;white-space:normal}
+  .theme-toggle .theme-label{display:none}
+  .theme-toggle{padding:6px 10px}
+
+  /* Search & filters */
+  .filter-bar{padding:10px 14px;gap:8px;flex-direction:column;align-items:stretch}
+  .filter-chips{gap:6px;justify-content:center}
+  .chip{font-size:10.5px;padding:5px 11px}
+  .results-count{text-align:center;margin-left:0}
+
+  /* Table — horizontal scroll with compact columns */
+  .table-content{padding:10px 12px 16px}
+  .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  table{min-width:680px}
+  thead th{font-size:9.5px;padding:9px 10px;letter-spacing:.5px}
+  td{padding:10px 10px;font-size:12px}
+  .td-nature{max-width:180px;font-size:12px}
+  .td-code{font-size:12px}
+  .td-rate{font-size:11px}
+  .td-thresh{font-size:10px;padding:2px 5px}
+  .td-form{font-size:10px;padding:1px 5px}
+  .type-badge{font-size:9px;padding:2px 7px}
+
+  /* Detail panel — full screen on mobile */
+  .detail-panel{width:100vw;border-left:none;border-top:1px solid var(--border2)}
+  .panel-code{font-size:26px}
+
+  /* Calculator */
+  .main{padding:12px 14px}
+  .calc-card{padding:16px}
+  .calc-title{font-size:15px}
+  .result-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .result-value{font-size:18px}
+  .form-row{grid-template-columns:1fr}
+  .section-info-box{font-size:12px}
+  .sib-key{font-size:10px}
+  .sib-val{font-size:11px}
+
+  /* Legend */
+  .table-legend{flex-direction:column;align-items:flex-start;gap:8px;padding:10px 14px}
+  .leg-sep{display:none}
+}
+
+/* ════════════════════════════════════════════════════════
+   RESPONSIVE — SMALL MOBILE (≤ 480px)
+   ════════════════════════════════════════════════════════ */
+@media(max-width:480px){
+  .header-title{font-size:16px}
+  .header-act{font-size:10.5px}
+  .tabs{width:100%;justify-content:center}
+  .tab{padding:7px 14px;font-size:12px;flex:1;text-align:center}
+  .result-grid{grid-template-columns:1fr}
+  .result-value{font-size:20px}
+  .result-card.highlight2{grid-column:1}
+  table{min-width:600px}
+  .header-note{font-size:9px;text-align:center;white-space:normal}
+}
+
+/* Touch: improve tap targets */
+@media(hover:none){
+  .chip{padding:8px 16px}
+  .tab{padding:10px 18px}
+  tbody tr{cursor:default}
+  tbody tr:active{background:var(--row-hover)!important}
+}
+
+/* ════════════════════════════════════════════════════════
+   PRINT / PDF STYLES
+   ════════════════════════════════════════════════════════ */
+@media print {
+  /* Hide everything except the rate chart */
+  .header,.filter-bar,#tab-calc,.detail-panel,.overlay,
+  .print-btn,.theme-toggle,.table-legend,.page-disclaimer,
+  #tab-calc,.sc-warn,.panel-calc-btn { display:none!important }
+
+  /* Print header */
+  .print-header{ display:block!important }
+
+  body{ background:#fff!important;color:#000!important;font-size:9pt }
+  .table-content,.main{ padding:0!important;margin:0!important;max-width:100%!important }
+  .table-wrap{ border:1px solid #ccc!important;box-shadow:none!important;border-radius:0!important }
+  .table-scroll{ overflow:visible!important }
+
+  /* Force all backgrounds white for print */
+  table,thead,tbody,tr,td,th{ background:#fff!important;color:#000!important }
+  thead th{
+    background:#1B3A6B!important;color:#fff!important;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+    font-size:7.5pt!important;padding:4pt 5pt!important;
+  }
+  td{ font-size:8pt!important;padding:4pt 5pt!important;border:0.5pt solid #ddd!important }
+
+  /* Type badges */
+  .type-badge{
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+    font-size:7pt!important;padding:1pt 4pt!important;border-radius:4pt!important;
+  }
+
+  /* Rate colors in print */
+  .rate-low{ color:#15803D!important }
+  .rate-med{ color:#D97706!important }
+  .rate-high{ color:#DC2626!important }
+  .rate-slab{ color:#6D28D9!important }
+
+  /* Threshold + form pill */
+  .td-thresh,.td-form{
+    background:#f1f5f9!important;border:0.5pt solid #cbd5e1!important;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+    font-size:7.5pt!important;padding:1pt 4pt!important;
+  }
+
+  /* Cess badges */
+  .cess-yes,.cess-nil,.cess-sal{
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+    font-size:7pt!important;padding:1pt 4pt!important;
+  }
+
+  /* Old sec italic */
+  .td-sec{ color:#475569!important;font-size:7pt!important }
+
+  /* Page setup */
+  @page{
+    size:A4 landscape;
+    margin:10mm 8mm;
+  }
+
+  /* Repeat header on each page */
+  thead{ display:table-header-group }
+  tr{ page-break-inside:avoid }
+}
+
+/* Print header — hidden on screen, shown on print */
+.print-header{ display:none }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+
+<div class="overlay" id="overlay" onclick="closePanel()"></div>
+
+<div class="header">
+  <div class="header-inner">
+    <!-- Title row with theme toggle pinned right -->
+    <div class="header-title-row">
+      <div id="firm_brand" style="font-size:10px;font-family:'IBM Plex Mono',monospace;color:rgba(255,255,255,0.55);letter-spacing:.5px;margin-bottom:2px"></div>
+      <div class="header-title">TDS / TCS Rate Chart &amp; Calculator</div>
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Switch theme" style="position:absolute;right:0;top:50%;transform:translateY(-50%)">
+        <span class="theme-icon" id="themeIcon">☀️</span>
+        <span class="theme-label" id="themeLabel">Light</span>
+      </button>
+    </div>
+    <!-- Act / legal reference line -->
+    <!-- Act line with inline TY dropdown -->
+    <div class="header-act">
+      Income Tax Act, 2025 &nbsp;&nbsp;·&nbsp;&nbsp;
+      <div class="ty-dd" id="ty_dd" style="display:inline-block;vertical-align:middle">
+        <div class="ty-dd-selected" id="ty_dd_selected" onclick="toggleTyDd()">
+          <span id="ty_dd_label">Tax Year 2026-27</span>
+          <span class="ty-dd-arrow" id="ty_dd_arrow">▾</span>
+        </div>
+        <div class="ty-dd-panel" id="ty_dd_panel" style="display:none">
+          <input class="ty-dd-search" id="ty_dd_search" type="text"
+            placeholder="Search year..." oninput="filterTyDd()" autocomplete="off">
+          <div class="ty-dd-list" id="ty_dd_list"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Tabs row -->
+    <div class="header-tabs-row" style="margin-top:10px">
+      <div class="tabs">
+        <button class="tab active" onclick="switchTab('chart')">📋 Rate Chart</button>
+        <button class="tab" onclick="switchTab('calc')">🧮 Calculator</button>
+      </div>
+    </div>
+    <div class="header-note" style="margin-top:4px">Effective: 1 April 2026 &nbsp;|&nbsp; Base rates only &nbsp;|&nbsp; Verify before filing</div>
+  </div>
+</div>
+
+<div id="loadingMsg" style="display:none;text-align:center;padding:32px;font-size:14px;color:var(--accent);font-family:'IBM Plex Mono',monospace;letter-spacing:.3px">
+  ⏳ Loading latest rates from OneDrive...
+</div>
+
+<!-- ══ CHART TAB ══════════════════════════════════════════════════════════ -->
+<div id="tab-chart">
+  <div class="filter-bar">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input class="search-input" id="searchInput" placeholder="Search by code, nature of payment, old section, deductor..." oninput="applyFilters()">
+    </div>
+    <div class="filter-chips">
+      <span class="chip chip-all active" data-cat="all" onclick="setChip(this)">All 88</span>
+      <span class="chip chip-sal" data-cat="SAL" onclick="setChip(this)">Salary</span>
+      <span class="chip chip-res" data-cat="RES" onclick="setChip(this)">Resident</span>
+      <span class="chip chip-nr" data-cat="NR" onclick="setChip(this)">Non-Resident</span>
+      <span class="chip chip-any" data-cat="ANY" onclick="setChip(this)">Any Person</span>
+      <span class="chip chip-tcs" data-cat="TCS" onclick="setChip(this)">TCS</span>
+    </div>
+    <div class="results-count" id="resultsCount">88 results</div>
+    <button class="print-btn" id="pdf_btn" onclick="downloadPDF()" title="Download Rate Chart as PDF">
+      <svg id="pdf_icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
+      <span id="pdf_btn_text">Download PDF</span>
+    </button>
+  </div>
+
+  <div class="print-header" id="print_header">
+    <div style="text-align:center;border-bottom:2pt solid #1B3A6B;padding-bottom:6pt;margin-bottom:8pt">
+      <div id="print_firm" style="font-size:10pt;font-weight:700;color:#1B3A6B;letter-spacing:.5pt"></div>
+      <div style="font-size:16pt;font-weight:700;color:#0F172A">TDS / TCS Rate Chart &amp; Calculator</div>
+      <div style="font-size:9pt;color:#475569;margin-top:2pt">
+        Income Tax Act, 2025 &nbsp;·&nbsp; <span id="print_ty">Tax Year 2026-27</span> &nbsp;·&nbsp; Finance Bill 2026
+      </div>
+      <div style="font-size:8pt;color:#DC2626;font-weight:600;margin-top:3pt">
+        BASE RATES ONLY — Surcharge &amp; Cess not included (except Non-Resident TDS) &nbsp;|&nbsp;
+        Effective: 1 April 2026 &nbsp;|&nbsp; Verify before filing
+      </div>
+      <div style="font-size:7.5pt;color:#94A3B8;margin-top:2pt" id="print_date"></div>
+    </div>
+  </div>
+  <div class="table-content main">
+  <div class="table-wrap">
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Sec Code</th>
+            <th>Type</th>
+            <th>Nature of Payment / Receipt</th>
+            <th style="text-align:center">Threshold</th>
+            <th>Base Rate</th>
+            <th>No PAN Rate</th>
+            <th>Surcharge<br>&amp; Cess</th>
+            <th>Sec 392B</th>
+            <th style="text-align:center">Form</th>
+            <th>New Section (IT Act 2025)</th>
+            <th>Old Sec (1961)</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="table-legend">
+    <span class="leg-item"><span class="cess-nil" style="pointer-events:none">✗ Nil</span> Resident TDS &amp; TCS — No Surcharge, No Cess at deduction point</span>
+    <span class="leg-sep">·</span>
+    <span class="leg-item"><span class="cess-sal" style="pointer-events:none">⚠ Via Slab</span> Salary TDS (Sec 392) — Surcharge &amp; Cess via estimated annual income</span>
+    <span class="leg-sep">·</span>
+    <span class="leg-item"><span class="cess-yes" style="pointer-events:none">✓ Applicable</span> Non-Resident TDS (Form 144) — Surcharge + 4% H&amp;E Cess apply</span>
+  </div>
+  <div class="page-disclaimer">
+    <div class="disc-row">
+      <span class="disc-badge">⚠ DISCLAIMER</span>
+      <span class="disc-text">
+        <strong>Base rates only.</strong> Surcharge and 4% Health &amp; Education Cess are <strong>NOT included</strong> for Resident TDS &amp; TCS at deduction point.
+        For <strong>Non-Resident TDS</strong> (Sec 393(2) / Form 144), Surcharge + Cess <strong>DO apply</strong>.
+        Rates and thresholds are subject to change — always verify from the <strong>Official Gazette / CBDT Circulars</strong> before filing.
+        Old IT Act 1961 section references are shown for cross-reference <strong>only</strong> — IT Act 2025 is the governing law from 1 April 2026.
+        This tool does not constitute legal or tax advice. Consult an authorised tax professional before compliance filing.
+      </span>
+    </div>
+    <div class="disc-updated">
+      📅 &nbsp; Data updated up to: <strong style="color:#93c5fd" id="data_updated_date1">01 April 2026</strong>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══ CALC TAB ═══════════════════════════════════════════════════════════ -->
+<div class="main" id="tab-calc" style="display:none">
+  <div class="calc-layout">
+    <div>
+      <div class="calc-card">
+        <div class="calc-title">🧮 TDS / TCS Calculator</div>
+
+        <div class="form-group" style="position:relative">
+          <label class="form-label">Section Code</label>
+          <!-- Custom searchable dropdown -->
+          <div class="sc-dropdown" id="sc_dropdown">
+            <div class="sc-selected" id="sc_selected" onclick="toggleDropdown()">
+              <span class="sc-sel-code" id="sc_sel_code">—</span>
+              <span class="sc-sel-nature" id="sc_sel_nature">Select a section code</span>
+              <span class="sc-arrow" id="sc_arrow">▾</span>
+            </div>
+            <div class="sc-panel" id="sc_panel" style="display:none">
+              <div class="sc-search-wrap">
+                <span class="sc-search-icon">🔍</span>
+                <input class="sc-search" id="sc_search" type="text"
+                  placeholder="Type code or keyword (e.g. 1023, rent, contractor)..."
+                  oninput="filterDropdown()" autocomplete="off">
+                <button class="sc-clear-btn" onclick="clearSearch()" title="Clear search">✕</button>
+              </div>
+              <div class="sc-count" id="sc_count">88 sections</div>
+              <div class="sc-list" id="sc_list"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group" id="c_section_info" style="display:none">
+          <div class="section-info-box">
+            <div class="sib-row"><span class="sib-key">New Section</span><span class="sib-val" id="si_newsec">—</span></div>
+            <div class="sib-row"><span class="sib-key">Old Section</span><span class="sib-val" id="si_oldsec">—</span></div>
+            <div class="sib-row"><span class="sib-key">Deductor</span><span class="sib-val" id="si_ded">—</span></div>
+            <div class="sib-row"><span class="sib-key">Threshold</span><span class="sib-val" id="si_thresh">—</span></div>
+            <div class="sib-row"><span class="sib-key">Surcharge/Cess</span><span class="sib-val" id="si_sc">—</span></div>
+            <div class="sib-row"><span class="sib-key">Return Form</span><span class="sib-val" id="si_form">—</span></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Payment / Credit Date</label>
+          <input class="form-input" type="date" id="c_date" min="2026-04-01"
+            oninput="onDateChange()" style="font-family:'IBM Plex Mono',monospace;font-size:13px">
+          <div id="date_err" style="display:none;margin-top:4px;font-size:11px;color:var(--red);font-family:'IBM Plex Mono',monospace;font-weight:700">
+            ⚠ Date must be on or after 01 April 2026 (IT Act 2025 effective date)
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Detected Tax Year</label>
+          <div style="padding:8px 12px;background:var(--bg);border:1.5px solid var(--border2);border-radius:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;color:var(--accent)" id="c_ty_display">— select date above —</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Gross Amount (₹)</label>
+          <input class="form-input" type="number" id="c_amount" value="100000" min="0" oninput="calcUpdate()">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">PAN / Aadhaar Furnished?</label>
+          <div class="radio-group">
+            <div class="radio-btn active" id="r_yes" onclick="setPAN(true)">✓ Yes — Normal Rate</div>
+            <div class="radio-btn" id="r_no" onclick="setPAN(false)">✗ No — Higher Rate</div>
+          </div>
+        </div>
+
+        <div id="nr_section" style="display:none">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Payee Type</label>
+              <select class="form-select" id="c_payeetype" onchange="calcUpdate()">
+                <option value="ind">Individual / HUF / AOP</option>
+                <option value="firm">Firm / LLP</option>
+                <option value="domco">Domestic Company</option>
+                <option value="forco">Foreign Company</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Estimated Income (₹)</label>
+              <input class="form-input" type="number" id="c_income" value="0" min="0" oninput="calcUpdate()">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="calc-card" id="calc_results">
+        <div class="calc-title">📊 Calculation Result</div>
+        <div style="color:var(--muted);font-size:13px;text-align:center;padding:40px 0" id="calc_placeholder">
+          Select a section code and enter amount to calculate
+        </div>
+        <div id="calc_output" style="display:none">
+          <div class="applicability" id="app_box">...</div>
+          <div class="result-grid">
+            <div class="result-card"><div class="result-label">Gross Amount</div><div class="result-value blue" id="r_gross">₹0</div></div>
+            <div class="result-card"><div class="result-label">Applied Rate</div><div class="result-value amber" id="r_rate">—</div></div>
+            <div class="result-card highlight"><div class="result-label">Base TDS / TCS</div><div class="result-value red" id="r_base">₹0</div></div>
+            <div class="result-card"><div class="result-label">Surcharge</div><div id="r_sc"><span class="result-value-na">—</span></div></div>
+            <div class="result-card"><div class="result-label">H&amp;E Cess (4%)</div><div id="r_cess"><span class="result-value-na">—</span></div></div>
+            <div class="result-card highlight"><div class="result-label">Total TDS to Deposit</div><div class="result-value red" id="r_total">₹0</div></div>
+            <div class="result-card highlight2" style="grid-column:1/-1"><div class="result-label">Net Amount to Payee</div><div class="result-value green" id="r_net">₹0</div></div>
+          </div>
+          <div class="sc-warn" id="sc_note" style="display:none"></div>
+          <!-- Date-based results -->
+          <div id="date_results" style="display:none">
+            <div class="date-result-box" id="date_box">
+              <div class="date-row">
+                <span class="date-key">Payment Date</span>
+                <span class="date-val" id="d_paydate">—</span>
+              </div>
+              <div class="date-row">
+                <span class="date-key">Tax Year (Auto-detected)</span>
+                <span class="date-val" id="d_ty">—</span>
+              </div>
+              <div class="date-row">
+                <span class="date-key">TDS Deposit Due Date</span>
+                <span class="date-val" id="d_duedate">—</span>
+              </div>
+              <div class="date-row">
+                <span class="date-key">Today's Date</span>
+                <span class="date-val" id="d_today">—</span>
+              </div>
+              <div class="date-row">
+                <span class="date-key">Status</span>
+                <span class="date-val" id="d_status">—</span>
+              </div>
+              <div class="date-row" id="d_days_row">
+                <span class="date-key" id="d_days_label">Days Remaining</span>
+                <span class="date-val" id="d_days">—</span>
+              </div>
+            </div>
+            <div class="interest-box" id="interest_box" style="display:none">
+              <div class="interest-title">⚠ LATE PAYMENT INTEREST — Sec 398(3) IT Act 2025</div>
+              <div class="interest-row">
+                <span class="interest-key">Payment / Deduction Date</span>
+                <span class="interest-val" id="i_paydate">—</span>
+              </div>
+              <div class="interest-row">
+                <span class="interest-key">TDS Deposit Due Date</span>
+                <span class="interest-val" id="i_duedate">—</span>
+              </div>
+              <div class="interest-row">
+                <span class="interest-key">Days Overdue (from due date to today)</span>
+                <span class="interest-val" id="i_days">—</span>
+              </div>
+              <div class="interest-row">
+                <span class="interest-key">Months Chargeable (part month = full month)</span>
+                <span class="interest-val" id="i_months">—</span>
+              </div>
+              <div class="interest-row" style="border-top:1px solid rgba(239,68,68,.3);margin-top:4px;padding-top:6px">
+                <span class="interest-key" style="color:var(--red);font-weight:700">Late Payment Interest @ 1.5% per month</span>
+                <span class="interest-val" id="i_late_pay">—</span>
+              </div>
+              <div class="interest-row">
+                <span class="interest-key" style="color:var(--red);font-weight:700">Total TDS + Interest to Deposit</span>
+                <span class="interest-val" id="i_total_with_int">—</span>
+              </div>
+              <div style="margin-top:10px;padding:9px 12px;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.35);border-radius:6px;font-size:11px;color:#fcd34d;line-height:1.6">
+                ⚠ <strong>Additional 1% Late Deduction Interest</strong> (Sec 398(3)) may also apply if TDS was deducted late (i.e. deducted after the date it was due). This is separate from late payment and is calculated from the date it should have been deducted to the date it was actually deducted — consult your tax advisor.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ DETAIL PANEL ══════════════════════════════════════════════════════ -->
+<div class="detail-panel" id="detailPanel">
+  <div class="panel-header">
+    <button class="panel-close" onclick="closePanel()">✕</button>
+    <div id="panel-code-badge" style="margin-bottom:8px"></div>
+    <div class="panel-code" id="panel-code">—</div>
+    <div class="panel-nature" id="panel-nature">—</div>
+    <button class="panel-calc-btn" id="panel-calc-btn" onclick="goToCalculator()">
+      🧮 Calculate TDS / TCS for this code →
+    </button>
+  </div>
+  <div class="panel-body">
+    <div class="detail-grid">
+      <div class="detail-card">
+        <div class="detail-label">Base Rate</div>
+        <div class="detail-value big" id="p-rate">—</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-label">No PAN Rate</div>
+        <div class="detail-value big red" id="p-nopan" style="font-size:18px">—</div>
+      </div>
+    </div>
+    <hr class="detail-sep">
+    <div class="detail-row"><div class="detail-label">New Section (IT Act 2025)</div><div class="detail-value mono" id="p-newsec">—</div></div>
+    <div class="detail-row"><div class="detail-label">Threshold Limit</div><div class="detail-value" id="p-thresh">—</div></div>
+    <div class="detail-row"><div class="detail-label">Deductor / Collector</div><div class="detail-value" id="p-ded">—</div></div>
+    <div class="detail-row"><div class="detail-label">Payee / Deductee</div><div class="detail-value" id="p-payee">—</div></div>
+    <div class="detail-row"><div class="detail-label">Return Form</div><div class="detail-value mono" id="p-form">—</div></div>
+    <div class="detail-row"><div class="detail-label">Lower TDS Certificate (Sec 392B)</div><div class="detail-value" id="p-sec197">—</div></div>
+    <hr class="detail-sep">
+    <div class="detail-row">
+      <div class="detail-label" style="margin-bottom:8px">Old Section Reference (IT Act 1961)</div>
+      <div class="old-sec-box">
+        <span style="font-size:18px">📌</span>
+        <div><div class="old-sec-label">For reference only — IT Act 2025 is governing law from 1 Apr 2026</div><div class="old-sec-val" id="p-oldsec">—</div></div>
+      </div>
+    </div>
+    <div id="p-note-wrap" style="display:none">
+      <hr class="detail-sep">
+      <div class="detail-label" style="margin-bottom:8px">Finance Bill 2026 Note</div>
+      <div class="note-box" id="p-note">—</div>
+    </div>
+    <hr class="detail-sep">
+    <div class="page-disclaimer">
+    <div class="disc-row">
+      <span class="disc-badge">⚠ DISCLAIMER</span>
+      <span class="disc-text">
+        <strong>Base rates only.</strong> Surcharge and 4% Health &amp; Education Cess are <strong>NOT included</strong> for Resident TDS &amp; TCS at deduction point.
+        For <strong>Non-Resident TDS</strong> (Sec 393(2) / Form 144), Surcharge + Cess <strong>DO apply</strong>.
+        Rates and thresholds are subject to change — always verify from the <strong>Official Gazette / CBDT Circulars</strong> before filing.
+        Old IT Act 1961 section references are shown for cross-reference <strong>only</strong> — IT Act 2025 is the governing law from 1 April 2026.
+        This tool does not constitute legal or tax advice. Consult an authorised tax professional before compliance filing.
+      </span>
+    </div>
+    <div class="disc-updated">
+      📅 &nbsp; Data updated up to: <strong style="color:#93c5fd" id="data_updated_date2">01 April 2026</strong>
+    </div>
+  </div>
+  </div>
+</div>
+
+<script>
+// ── THEME ────────────────────────────────────────────────────────────────────
+(function(){
+  const saved = localStorage.getItem('tds-theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', saved);
+  // update button state after DOM loads
+  window.addEventListener('DOMContentLoaded', () => syncThemeBtn(saved));
+})();
+
+function syncThemeBtn(theme){
+  setTimeout(setHeaderHeight, 50);
+  const icon = document.getElementById('themeIcon');
+  const label = document.getElementById('themeLabel');
+  if(!icon) return;
+  if(theme === 'light'){
+    icon.textContent = '🌙';
+    label.textContent = 'Dark';
+  } else {
+    icon.textContent = '☀️';
+    label.textContent = 'Light';
+  }
+}
+
+function toggleTheme(){
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme') || 'dark';
+  const next = current === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('tds-theme', next);
+  syncThemeBtn(next);
+}
+
+// ── LIVE DATA CONFIG — Update DATA_URL after SharePoint setup ────────────────
+const CONFIG = {
+  DATA_URL:    'https://jdccacom.sharepoint.com/:u:/s/TDS-Tool/IQBTjAKcmgweQpmNWZcvXfX3AWCXpjS_ZLns9Dbh3SW5ldQ?e=sqplNn&download=1',  // e.g. https://yourcompany.sharepoint.com/sites/TDS-Tool/Public/data.json
+  FIRM_NAME:   'JDC And Associates LLP',
+  FIRM_EMAIL:  'mail@jdcca.com',
+  FIRM_PHONE:  '+91 XXXXX XXXXX',
+  FIRM_WEBSITE:'www.jdcca.com',
+  CACHE_MINS:  30,  // cache data.json for 30 minutes per browser session
+};
+
+// ── DATA — loaded from OneDrive via Power Automate ──────────────────────────
+// While live URL is not configured, falls back to embedded data below.
+// After SharePoint setup: set DATA_URL above and remove the embedded DATA block.
+let DATA = [];
+let _dataLoaded = false;
+
+async function loadData(){
+  // Check session cache first
+  try {
+    const cached = sessionStorage.getItem('tds_data');
+    const cacheTime = sessionStorage.getItem('tds_data_time');
+    if(cached && cacheTime){
+      const ageMin = (Date.now() - parseInt(cacheTime)) / 60000;
+      if(ageMin < CONFIG.CACHE_MINS){
+        DATA = JSON.parse(cached);
+        _dataLoaded = true;
+        console.log('TDS data loaded from cache (' + ageMin.toFixed(1) + ' min old)');
+        return true;
+      }
+    }
+  } catch(e){}
+
+  // Try live URL
+  if(CONFIG.DATA_URL && CONFIG.DATA_URL !== 'YOUR_DATA_JSON_URL_HERE'){
+    try {
+      showLoadingState('Fetching latest rates from OneDrive...');
+      const res = await fetch(CONFIG.DATA_URL, {
+          cache:'no-cache',
+          headers: { 'Accept': 'application/json, text/plain, */*' }
+        });
+      if(res.ok){
+        const json = await res.json();
+        // Support both direct array and wrapped {sections:[...]} format
+        DATA = Array.isArray(json) ? json : (json.sections || json.data || []);
+        _dataLoaded = true;
+        try {
+          sessionStorage.setItem('tds_data', JSON.stringify(DATA));
+          sessionStorage.setItem('tds_data_time', Date.now().toString());
+        } catch(e){}
+        console.log('TDS data loaded from OneDrive: ' + DATA.length + ' sections, generated: ' + (json.generated||'unknown'));
+        // Update "Data updated up to" date in both disclaimers
+        if(json.generated){
+          const genDate = new Date(json.generated);
+          const fmtGen = genDate.toLocaleDateString('en-IN',{day:'2-digit',month:'long',year:'numeric'});
+          ['data_updated_date1','data_updated_date2'].forEach(id=>{
+            const el = document.getElementById(id);
+            if(el) el.textContent = fmtGen;
+          });
+        }
+        return true;
+      }
+    } catch(e){
+      console.warn('Live data fetch failed, falling back to embedded data:', e.message);
+        showLoadingState('Using embedded data (live fetch unavailable)...');
+    }
+  }
+
+  // Fallback to embedded data
+  DATA = EMBEDDED_DATA;
+  _dataLoaded = true;
+  console.log('TDS data loaded from embedded fallback: ' + DATA.length + ' sections');
+  return true;
+}
+
+function showLoadingState(msg){
+  const el = document.getElementById('loadingMsg');
+  if(el){ el.textContent = msg; el.style.display = ''; }
+}
+function hideLoadingState(){
+  const el = document.getElementById('loadingMsg');
+  if(el) el.style.display = 'none';
+}
+
+// ── EMBEDDED FALLBACK DATA (used when live URL not set or unreachable) ────────
+const EMBEDDED_DATA = [{"code": "1001", "type": "TDS", "cat": "SAL", "nature": "Payment to Government employees other than Union Government employees", "deductor": "Employer", "payee": "Resident / Non-Resident", "oldSec": "192", "newSec": "392", "baseRate": "Slab rates — 5% / 20% / 30% (Finance Bill 2026 Part III)", "baseFloat": 0.0, "threshold": "As per income slab", "threshFloat": 0.0, "noPan": "Higher of 20% or slab rate", "noPanFloat": 0.0, "sec197": "Yes", "form": "138", "note": "Finance Bill 2026, First Schedule Part III: Nil up to ₹2,50,000; 5% (₹2.5L–5L); 20% (₹5L–10L); 30% above ₹10L"}, {"code": "1002", "type": "TDS", "cat": "SAL", "nature": "Payment to employees other than Government employees", "deductor": "Employer", "payee": "Resident / Non-Resident", "oldSec": "192", "newSec": "392", "baseRate": "Slab rates — 5% / 20% / 30% (Finance Bill 2026 Part III)", "baseFloat": 0.0, "threshold": "As per income slab", "threshFloat": 0.0, "noPan": "Higher of 20% or slab rate", "noPanFloat": 0.0, "sec197": "Yes", "form": "138", "note": "Finance Bill 2026, First Schedule Part III: Nil up to ₹2,50,000; 5% (₹2.5L–5L); 20% (₹5L–10L); 30% above ₹10L"}, {"code": "1003", "type": "TDS", "cat": "SAL", "nature": "Payment to Indian Government employees", "deductor": "Employer", "payee": "Resident / Non-Resident", "oldSec": "192", "newSec": "392", "baseRate": "Slab rates — 5% / 20% / 30% (Finance Bill 2026 Part III)", "baseFloat": 0.0, "threshold": "As per income slab", "threshFloat": 0.0, "noPan": "Higher of 20% or slab rate", "noPanFloat": 0.0, "sec197": "Yes", "form": "138", "note": "Finance Bill 2026, First Schedule Part III: Nil up to ₹2,50,000; 5% (₹2.5L–5L); 20% (₹5L–10L); 30% above ₹10L"}, {"code": "1004", "type": "TDS", "cat": "SAL", "nature": "Any payment of accumulated balance due to an employee", "deductor": "Trustees of EPF Scheme / authorized person", "payee": "Resident", "oldSec": "192A", "newSec": "392(7)", "baseRate": "10% (resident) / 20% (non-resident)", "baseFloat": 0.0, "threshold": "As per income slab", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "140, 144", "note": "Finance Bill 2026, First Schedule Part II: 10% for resident; 20% for non-resident per 'rates in force' (Sl. No. 393(2)[Table Sl. Nos. 7,8,9,17])"}, {"code": "1005", "type": "TDS", "cat": "RES", "nature": "Commission or brokerage - insurance", "deductor": "Any person", "payee": "Resident", "oldSec": "194D", "newSec": "393(1) [Table: Sl. No. 1(i)]", "baseRate": "2% (resident) / 20% (non-resident)", "baseFloat": 0.0, "threshold": "₹20,000", "threshFloat": 20000.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "Yes", "form": "140", "note": "Finance Bill 2026, First Schedule Part II: 2% for resident (insurance commission); 20% for non-resident"}, {"code": "1006", "type": "TDS", "cat": "RES", "nature": "Commission or brokerage - others", "deductor": "Specified person", "payee": "Resident", "oldSec": "194H", "newSec": "393(1) [Table: Sl. No. 1(ii)]", "baseRate": "2%", "baseFloat": 0.02, "threshold": "₹20,000", "threshFloat": 20000.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "Yes", "form": "140", "note": ""}, {"code": "1008", "type": "TDS", "cat": "RES", "nature": "Rent on machinery / plant / equipment - specified person", "deductor": "Specified person", "payee": "Resident", "oldSec": "194-I(a)", "newSec": "393(1) [Table: Sl. No. 2(ii).D(a)]", "baseRate": "2%", "baseFloat": 0.02, "threshold": "₹ 50,000 per month", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "Yes", "form": "140", "note": ""}, {"code": "1009", "type": "TDS", "cat": "RES", "nature": "Rent on land / building / furniture / fittings - specified person", "deductor": "Specified person", "payee": "Resident", "oldSec": "194-I(b)", "newSec": "393(1) [Table: Sl. No. 2(ii).D(b)]", "baseRate": "10%", "baseFloat": 0.1, "threshold": "₹ 50,000 per month", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "Yes", "form": "140", "note": ""}, {"code": "1011", "type": "TDS", "cat": "RES", "nature": "Payment on consideration under agreement referred to in section 67(14)", "deductor": "Any person", "payee": "Resident", "oldSec": "194-IC", "newSec": "393(1) [Table: Sl. No. 3(ii)]", "baseRate": "10%", "baseFloat": 0.1, "threshold": "Nil", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "140", "note": ""}, {"code": "1012", "type": "TDS", "cat": "RES", "nature": "Payment of compensation on compulsory acquisition of certain immovable property", "deductor": "Any person", "payee": "Resident", "oldSec": "194LA", "newSec": "393(1) [Table: Sl. No. 3(iii)]", "baseRate": "10%", "baseFloat": 0.1, "threshold": "₹5 Lakh", "threshFloat": 500000.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "140", "note": ""}, {"code": "1013", "type": "TDS", "cat": "RES", "nature": "Income from units of specified Mutual Fund / Administrator / specified company", "deductor": "Any person", "payee": "Resident", "oldSec": "194K", "newSec": "393(1) [Table: Sl. No. 4(i)]", "baseRate": "10%", "baseFloat": 0.1, "threshold": "₹10,000", "threshFloat": 10000.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "Yes", "form": "140", "note": ""}, {"code": "1014", "type": "TDS", "cat": "RES", "nature": "Interest from units of a business trust to resident unit holder", "deductor": "Any Business Trust", "payee": "Resident / Non-Resident", "oldSec": "194LBA", "newSec": "393(1) [Table: Sl. No. 4(ii)]", "baseRate": "10%", "baseFloat": 0.1, "threshold": "Nil", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "140", "note": ""}, {"code": "1015", "type": "TDS", "cat": "RES", "nature": "Dividend from units of a business trust to resident unit holder", "deductor": "Any Business Trust", "payee": "Resident / Non-Resident", "oldSec": "194LBA", "newSec": "393(1) [Table: Sl. No. 4(ii)]", "baseRate": "10%", "baseFloat": 0.1, "threshold": "Nil", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "140", "note": ""}, {"code": "1016", "type": "TDS", "cat": "RES", "nature": "Renting income from units of a REIT to resident unit holder", "deductor": "Any Business Trust", "payee": "Resident / Non-Resident", "oldSec": "194LBA", "newSec": "393(1) [Table: Sl. No. 4(ii)]", "baseRate": "10%", "baseFloat": 0.1, "threshold": "Nil", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "140", "note": ""}, {"code": "1017", "type": "TDS", "cat": "RES", "nature": "Income from units of investment fund specified in section 224", "deductor": "Any Investment fund specified in section 224", "payee": "Resident / Non-Resident", "oldSec": "194LBB", "newSec": "393(1) [Table: Sl. No. 4(iii)]", "baseRate": "10%", "baseFloat": 0.1, "threshold": "Nil", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "140", "note": ""}, {"code": "1018", "type": "TDS", "cat": "RES", "nature": "Income from securitisation trust specified in section 221", "deductor": "Any securitisation trust specified in section 221", "payee": "Resident / Non-Resident", "oldSec": "194LBC", "newSec": "393(1) [Table: Sl. No. 4(iv)]", "baseRate": "10%", "baseFloat": 0.1, "threshold": "Nil", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "140", "note": ""}, {"code": "1019", "type": "TDS", "cat": "RES", "nature": "Any income by way of interest on securities", "deductor": "Any person", "payee": "Resident", "oldSec": "193", "newSec": "393(1) [Table: Sl. No. 5(i)]", "baseRate": "10% (resident) / 10% (non-resident, listed debentures)", "baseFloat": 0.0, "threshold": "₹10,000", "threshFloat": 10000.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "Yes", "form": "140", "note": "Finance Bill 2026, First Schedule Part II: 10% on interest other than 'interest on securities'; 10% on debentures listed on recognised stock exchange"}, {"code": "1020", "type": "TDS", "cat": "RES", "nature": "Interest (other than on securities) - senior citizen deductee - bank/cooperative/post office", "deductor": "Banking company / cooperative society / post office", "payee": "Resident", "oldSec": "194A", "newSec": "393(1) [Table: Sl. No. 5(ii).D(a)]", "baseRate": "10% (resident) / 20% (non-resident)", "baseFloat": 0.0, "threshold": "₹1 Lakh", "threshFloat": 100000.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "Yes", "form": "140", "note": "Finance Bill 2026, First Schedule Part II: 10% on interest other than 'interest on securities' for resident; 20% for non-resident"}, {"code": "1021", "type": "TDS", "cat": "RES", "nature": "Interest (other than on securities) - other deductee - bank/cooperative/post office", "deductor": "Banking company / cooperative society / post office", "payee": "Resident", "oldSec": "194A", "newSec": "393(1) [Table: Sl. No. 5(ii).D(b)]", "baseRate": "10% (resident) / 20% (non-resident)", "baseFloat": 0.0, "threshold": "₹50,000", "threshFloat": 50000.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "Yes", "form": "140", "note": "Finance Bill 2026, First Schedule Part II: 10% on interest (non-securities) for resident; 20% for non-resident"}, {"code": "1022", "type": "TDS", "cat": "RES", "nature": "Interest other than interest on securities - specified person", "deductor": "Specified person [other than Sl. No. 5(ii).C]", "payee": "Resident", "oldSec": "194A", "newSec": "393(1) [Table: Sl. No. 5(iii)]", "baseRate": "10% (resident) / 20% (non-resident)", "baseFloat": 0.0, "threshold": "₹10,000", "threshFloat": 10000.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "Yes", "form": "140", "note": "Finance Bill 2026, First Schedule Part II: 10% for resident; 20% for non-resident"}, {"code": "1023", "type": "TDS", "cat": "RES", "nature": "Contract work - individual/HUF contractor - designated person", "deductor": "Any designated person", "payee": "Resident", "oldSec": "194C", "newSec": "393(1) [Table: Sl. No. 6(i).D(a)]", "baseRate": "1%", "baseFloat": 0.01, "threshold": "₹30,000", "threshFloat": 30000.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "Yes", "form": "140", "note": ""}, {"code": "1024", "type": "TDS", "cat": "RES", "nature": "Contract work - contractor other than individual/HUF - designated person", "deductor": "Any designated person", "payee": "Resident", "oldSec": "194C", "newSec": "393(1) [Table: Sl. No. 6(i).D(b)]", "baseRate": "2%", "baseFloat": 0.02, "threshold": "₹1 Lakh", "threshFloat": 100000.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "Yes", "form": "140", "note": ""}, {"code": "1026", "type": "TDS", "cat": "RES", "nature": "Fees for technical services / royalty for cinematographic films / call centre", "deductor": "Specified person", "payee": "Resident", "oldSec": "194J", "newSec": "393(1) [Table: Sl. No. 6(iii).D(a)]", "baseRate": "2%", "baseFloat": 0.02, "threshold": "₹50,000", "threshFloat": 50000.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "Yes", "form": "140", "note": ""}, {"code": "1027", "type": "TDS", "cat": "RES", "nature": "Fees for professional services / sum referred to in section 26(2)(h)", "deductor": "Specified person", "payee": "Resident", "oldSec": "194J", "newSec": "393(1) [Table: Sl. No. 6(iii).D(b)]", "baseRate": "10%", "baseFloat": 0.1, "threshold": "₹50,000", "threshFloat": 50000.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "Yes", "form": "140", "note": ""}, {"code": "1028", "type": "TDS", "cat": "RES", "nature": "Remuneration / fees / commission to a director of a company", "deductor": "Specified person", "payee": "Resident", "oldSec": "194J", "newSec": "393(1) [Table: Sl. No. 6(iii).D(b)]", "baseRate": "10%", "baseFloat": 0.1, "threshold": "Nil", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "Yes", "form": "140", "note": ""}, {"code": "1029", "type": "TDS", "cat": "RES", "nature": "Any dividends (including on preference shares) declared", "deductor": "Any domestic company", "payee": "Resident", "oldSec": "194", "newSec": "393(1) [Table: Sl. No. 7]", "baseRate": "10%", "baseFloat": 0.1, "threshold": "Nil", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "Yes", "form": "140", "note": ""}, {"code": "1030", "type": "TDS", "cat": "RES", "nature": "Sum under a life insurance policy including bonus", "deductor": "Any person", "payee": "Resident", "oldSec": "194DA", "newSec": "393(1) [Table: Sl. No. 8(i)]", "baseRate": "2% on income comprised in sum", "baseFloat": 0.0, "threshold": "₹1 Lakh", "threshFloat": 100000.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "140", "note": ""}, {"code": "1031", "type": "TDS", "cat": "RES", "nature": "Any sum for purchase of any goods", "deductor": "Any person (buyer)", "payee": "Resident", "oldSec": "194Q", "newSec": "393(1) [Table: Sl. No. 8(ii)]", "baseRate": "0.1%", "baseFloat": 0.001, "threshold": "₹50 Lakh", "threshFloat": 5000000.0, "noPan": "5%", "noPanFloat": 0.05, "sec197": "No", "form": "140", "note": ""}, {"code": "1032", "type": "TDS", "cat": "RES", "nature": "Payment to Specified Senior Citizen - total income", "deductor": "Specified bank", "payee": "Resident (Senior Citizen)", "oldSec": "194P", "newSec": "393(1) [Table: Sl. No. 8(iii)]", "baseRate": "Slab rates — 5% / 20% / 30% (Finance Bill 2026 Part III)", "baseFloat": 0.0, "threshold": "As per income slab", "threshFloat": 0.0, "noPan": "Higher of 20% or slab", "noPanFloat": 0.0, "sec197": "No", "form": "138", "note": "Finance Bill 2026, First Schedule Part III: Nil up to ₹2,50,000; 5% (₹2.5L–5L); 20% (₹5L–10L); 30% above ₹10L. Takes precedence over all other provisions."}, {"code": "1033", "type": "TDS", "cat": "RES", "nature": "Benefit / perquisite (not convertible into money) arising from business or profession", "deductor": "Any specified person", "payee": "Resident", "oldSec": "194R", "newSec": "393(1) [Table: Sl. No. 8(iv)]", "baseRate": "10% of value", "baseFloat": 0.0, "threshold": "₹20,000", "threshFloat": 20000.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "140", "note": ""}, {"code": "1034", "type": "TDS", "cat": "RES", "nature": "Benefit / perquisite (cash or kind) arising from business or profession", "deductor": "Any specified person", "payee": "Resident", "oldSec": "194R", "newSec": "393(1) [Table: Sl. No. 8(iv) Note 6]", "baseRate": "10% of value", "baseFloat": 0.0, "threshold": "₹20,000", "threshFloat": 20000.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "140", "note": ""}, {"code": "1035", "type": "TDS", "cat": "RES", "nature": "Sale of goods/services by e-commerce participant via e-commerce operator", "deductor": "Any e-commerce operator", "payee": "Resident", "oldSec": "194-O", "newSec": "393(1) [Table: Sl. No. 8(v)]", "baseRate": "0.1% of gross amount", "baseFloat": 0.0, "threshold": "Nil", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "140", "note": ""}, {"code": "1037", "type": "TDS", "cat": "RES", "nature": "Consideration for transfer of virtual digital asset - other than Individual/HUF", "deductor": "Any person", "payee": "Resident", "oldSec": "194S", "newSec": "393(1) [Table: Sl. No. 8(vi)]", "baseRate": "1%", "baseFloat": 0.01, "threshold": "Nil", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "140", "note": ""}, {"code": "1038", "type": "TDS", "cat": "RES", "nature": "Consideration (cash or kind) for transfer of virtual digital asset", "deductor": "Any person", "payee": "Resident", "oldSec": "194S", "newSec": "393(1) [Table: Sl. No. 8(vi) Note 6]", "baseRate": "1%", "baseFloat": 0.01, "threshold": "Nil", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "140", "note": ""}, {"code": "1039", "type": "TDS", "cat": "NR", "nature": "Income referred to in section 211 - non-resident sportsman / entertainer / sports association", "deductor": "Any person", "payee": "Non-Resident", "oldSec": "194E", "newSec": "393(2) [Table: Sl. No. 1]", "baseRate": "20%", "baseFloat": 0.2, "threshold": "Nil", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "144", "note": ""}, {"code": "1040", "type": "TDS", "cat": "NR", "nature": "Interest on foreign currency borrowing (loan/LT infra bond) Jul 2012 - Jul 2023", "deductor": "Any Indian company or business trust", "payee": "Non-Resident", "oldSec": "194LC", "newSec": "393(2) [Table: Sl. No. 2]", "baseRate": "5%", "baseFloat": 0.05, "threshold": "Nil", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "144", "note": ""}, {"code": "1041", "type": "TDS", "cat": "NR", "nature": "Interest on rupee denominated bond issued before 1st July 2023", "deductor": "Any Indian company or business trust", "payee": "Non-Resident", "oldSec": "194LC", "newSec": "393(2) [Table: Sl. No. 3]", "baseRate": "5%", "baseFloat": 0.05, "threshold": "Nil", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "144", "note": ""}, {"code": "1042", "type": "TDS", "cat": "NR", "nature": "Interest on LT bond / rupee bond listed on IFSC (Apr 2020 - Jul 2023)", "deductor": "Any Indian company or business trust", "payee": "Non-Resident", "oldSec": "194LC", "newSec": "393(2) [Table: Sl. No. 4.E(a)]", "baseRate": "4%", "baseFloat": 0.04, "threshold": "Nil", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "144", "note": ""}, {"code": "1043", "type": "TDS", "cat": "NR", "nature": "Interest on LT bond / rupee bond listed on IFSC (on or after Jul 2023)", "deductor": "Any Indian company or business trust", "payee": "Non-Resident", "oldSec": "194LC", "newSec": "393(2) [Table: Sl. No. 4.E(b)]", "baseRate": "9%", "baseFloat": 0.09, "threshold": "Nil", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "144", "note": ""}, {"code": "1044", "type": "TDS", "cat": "NR", "nature": "Interest income - infrastructure debt fund referred to in Schedule VII", "deductor": "Any infrastructure debt fund", "payee": "Non-Resident", "oldSec": "194LB", "newSec": "393(2) [Table: Sl. No. 5]", "baseRate": "5%", "baseFloat": 0.05, "threshold": "Nil", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "144", "note": ""}, {"code": "1045", "type": "TDS", "cat": "NR", "nature": "Distributed income - business trust - Schedule V [Table: Sl. No. 3.B(a)]", "deductor": "Any business trust", "payee": "Resident / Non-Resident", "oldSec": "194LBA", "newSec": "393(2) [Table: Sl. No. 6.E(a)]", "baseRate": "5%", "baseFloat": 0.05, "threshold": "Nil", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "144", "note": ""}, {"code": "1046", "type": "TDS", "cat": "NR", "nature": "Distributed income - business trust - Schedule V [Table: Sl. No. 3.B(b)]", "deductor": "Any business trust", "payee": "Resident / Non-Resident", "oldSec": "194LBA", "newSec": "393(2) [Table: Sl. No. 6.E(b)]", "baseRate": "10%", "baseFloat": 0.1, "threshold": "Nil", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "144", "note": ""}, {"code": "1047", "type": "TDS", "cat": "NR", "nature": "Distributed income - business trust - Schedule V [Table: Sl. No. 4]", "deductor": "Any business trust", "payee": "Resident / Non-Resident", "oldSec": "194LBA", "newSec": "393(2) [Table: Sl. No. 7]", "baseRate": "Rates in force — 30% (non-resident individual) / 40% (foreign company)", "baseFloat": 0.0, "threshold": "Nil", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "144", "note": "Finance Bill 2026, First Schedule Part II: 'rates in force' for non-resident. Applicable rate: 30% for non-resident individual; 40% for foreign company. Surcharge and cess additional."}, {"code": "1048", "type": "TDS", "cat": "NR", "nature": "Income from investment fund units (section 224) - non-resident unit holder", "deductor": "Any investment fund specified in section 224", "payee": "Resident / Non-Resident", "oldSec": "194LBB", "newSec": "393(2) [Table: Sl. No. 8]", "baseRate": "Rates in force — 30% (non-resident individual) / 40% (foreign company)", "baseFloat": 0.0, "threshold": "Nil", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "144", "note": "Finance Bill 2026, First Schedule Part II: 'rates in force'. 30% for non-resident individual; 40% for foreign company."}, {"code": "1049", "type": "TDS", "cat": "NR", "nature": "Income from securitisation trust (section 221) - non-resident investor", "deductor": "Any securitisation trust specified in section 221", "payee": "Resident / Non-Resident", "oldSec": "194LBC", "newSec": "393(2) [Table: Sl. No. 9]", "baseRate": "Rates in force — 30% (non-resident individual) / 40% (foreign company)", "baseFloat": 0.0, "threshold": "Nil", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "144", "note": "Finance Bill 2026, First Schedule Part II: 'rates in force'. 30% for non-resident individual; 40% for foreign company."}, {"code": "1050", "type": "TDS", "cat": "NR", "nature": "Income from Mutual Fund units / specified company - non-resident", "deductor": "Any person", "payee": "Non-Resident", "oldSec": "196B", "newSec": "393(2) [Table: Sl. No. 10]", "baseRate": "20%; or DTAA rate if lower", "baseFloat": 0.0, "threshold": "Nil", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "144", "note": ""}, {"code": "1051", "type": "TDS", "cat": "NR", "nature": "Income from units referred to in section 208 - Offshore fund", "deductor": "Any person", "payee": "Non-Resident", "oldSec": "196C", "newSec": "393(2) [Table: Sl. No. 11]", "baseRate": "10%", "baseFloat": 0.1, "threshold": "Nil", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "144", "note": ""}, {"code": "1052", "type": "TDS", "cat": "NR", "nature": "Long-term capital gains on units referred to in section 208 - Offshore fund", "deductor": "Any person", "payee": "Non-Resident", "oldSec": "196C", "newSec": "393(2) [Table: Sl. No. 12]", "baseRate": "12.5%", "baseFloat": 0.125, "threshold": "Nil", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "144", "note": ""}, {"code": "1053", "type": "TDS", "cat": "NR", "nature": "Interest / dividends on bonds or Global Depository Receipts (section 209)", "deductor": "Any person", "payee": "Non-Resident", "oldSec": "196C", "newSec": "393(2) [Table: Sl. No. 13]", "baseRate": "10%", "baseFloat": 0.1, "threshold": "Nil", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "144", "note": ""}, {"code": "1054", "type": "TDS", "cat": "NR", "nature": "Long-term capital gains on bonds or GDRs referred to in section 209", "deductor": "Any person", "payee": "Non-Resident", "oldSec": "196C", "newSec": "393(2) [Table: Sl. No. 14]", "baseRate": "12.5%", "baseFloat": 0.125, "threshold": "Nil", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "144", "note": ""}, {"code": "1055", "type": "TDS", "cat": "NR", "nature": "Income on securities (section 210(1)) - Foreign Institutional Investor", "deductor": "Any person", "payee": "Non-Resident", "oldSec": "196D", "newSec": "393(2) [Table: Sl. No. 15]", "baseRate": "20%; or DTAA rate if lower", "baseFloat": 0.0, "threshold": "Nil", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "144", "note": ""}, {"code": "1056", "type": "TDS", "cat": "NR", "nature": "Income on securities (section 210(1)) - specified fund (Schedule VI)", "deductor": "Any person", "payee": "Non-Resident", "oldSec": "196D", "newSec": "393(2) [Table: Sl. No. 16]", "baseRate": "10%", "baseFloat": 0.1, "threshold": "Nil", "threshFloat": 0.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "144", "note": ""}, {"code": "1057", "type": "TDS", "cat": "NR", "nature": "Interest or other sum chargeable under Act (not salary, not covered in Sl. 2-5)", "deductor": "Any person", "payee": "Non-Resident", "oldSec": "195", "newSec": "393(2) [Table: Sl. No. 17]", "baseRate": "Rates in force — 20% (interest) / 30% (other income) for non-resident; 40% foreign co.", "baseFloat": 0.0, "threshold": "Nil", "threshFloat": 0.0, "noPan": "Applicable rate or 20%", "noPanFloat": 0.0, "sec197": "Yes", "form": "144", "note": "Finance Bill 2026, First Schedule Part II: 20% on interest payable by Govt/Indian concern on foreign currency borrowing; 20% on royalty (post Apr 1976 agreements); 20% on fees for technical services (post Apr 1976); 30% on other income for non-reside"}, {"code": "1058", "type": "TDS", "cat": "ANY", "nature": "Winnings from lottery / crossword puzzle / card game / gambling - resident", "deductor": "Any person", "payee": "Resident", "oldSec": "194B", "newSec": "393(3) [Table: Sl. No. 1]", "baseRate": "30%", "baseFloat": 0.3, "threshold": "₹ 10,000 per transaction", "threshFloat": 0.0, "noPan": "30%", "noPanFloat": 0.3, "sec197": "No", "form": "140, 144", "note": "Finance Bill 2026, First Schedule Part II: 30% on winnings from lotteries, crossword puzzles, card games (other than online games)"}, {"code": "1059", "type": "TDS", "cat": "ANY", "nature": "Winnings (in kind / insufficient cash) from lottery / gambling", "deductor": "Any person", "payee": "Resident", "oldSec": "194B", "newSec": "393(3) [Table: Sl. No. 1 Note 2]", "baseRate": "30%", "baseFloat": 0.3, "threshold": "₹ 10,000 per transaction", "threshFloat": 0.0, "noPan": "30%", "noPanFloat": 0.3, "sec197": "No", "form": "140, 144", "note": "Finance Bill 2026, First Schedule Part II: 30%. Note: Payer must ensure tax paid before releasing winnings in kind."}, {"code": "1060", "type": "TDS", "cat": "ANY", "nature": "Winnings from online game", "deductor": "Any person", "payee": "Resident", "oldSec": "194BA", "newSec": "393(3) [Table: Sl. No. 2]", "baseRate": "30%", "baseFloat": 0.3, "threshold": "Net winnings in user account", "threshFloat": 0.0, "noPan": "30%", "noPanFloat": 0.3, "sec197": "No", "form": "140, 144", "note": "Finance Bill 2026, First Schedule Part II: 30% on net winnings from online games"}, {"code": "1061", "type": "TDS", "cat": "ANY", "nature": "Winnings from online game (in kind / insufficient cash)", "deductor": "Any person", "payee": "Resident", "oldSec": "194BA", "newSec": "393(3) [Table: Sl. No. 2 Note 2]", "baseRate": "30%", "baseFloat": 0.3, "threshold": "Net winnings", "threshFloat": 0.0, "noPan": "30%", "noPanFloat": 0.3, "sec197": "No", "form": "140, 144", "note": "Finance Bill 2026, First Schedule Part II: 30%. Note: Payer must ensure tax paid before releasing winnings in kind."}, {"code": "1062", "type": "TDS", "cat": "ANY", "nature": "Winnings from any horse race", "deductor": "Bookmaker / licensed person for horse racing", "payee": "Resident", "oldSec": "194BB", "newSec": "393(3) [Table: Sl. No. 3]", "baseRate": "30%", "baseFloat": 0.3, "threshold": "₹ 10,000 per transaction", "threshFloat": 0.0, "noPan": "30%", "noPanFloat": 0.3, "sec197": "No", "form": "140, 144", "note": "Finance Bill 2026, First Schedule Part II: 30% on winnings from horse races"}, {"code": "1063", "type": "TDS", "cat": "ANY", "nature": "Commission / remuneration / prize on lottery tickets", "deductor": "Any person", "payee": "Resident", "oldSec": "194G", "newSec": "393(3) [Table: Sl. No. 4]", "baseRate": "2%", "baseFloat": 0.02, "threshold": "₹20,000", "threshFloat": 20000.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "Yes", "form": "140, 144", "note": ""}, {"code": "1064", "type": "TDS", "cat": "ANY", "nature": "Cash withdrawal - deductee being a co-operative society", "deductor": "Banking company / cooperative society / post office", "payee": "Resident", "oldSec": "194N", "newSec": "393(3) [Table: Sl. No. 5.D(a)]", "baseRate": "2%", "baseFloat": 0.02, "threshold": "₹3 Cr", "threshFloat": 30000000.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "140, 144", "note": ""}, {"code": "1065", "type": "TDS", "cat": "ANY", "nature": "Cash withdrawal - deductee other than co-operative society", "deductor": "Banking company / cooperative society / post office", "payee": "Resident", "oldSec": "194N", "newSec": "393(3) [Table: Sl. No. 5.D(b)]", "baseRate": "2%", "baseFloat": 0.02, "threshold": "₹1 Cr", "threshFloat": 10000000.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "140, 144", "note": ""}, {"code": "1066", "type": "TDS", "cat": "ANY", "nature": "Amount under section 80CCA(2)(a) of Income-tax Act, 1961", "deductor": "Any person", "payee": "Resident", "oldSec": "194EE", "newSec": "393(3) [Table: Sl. No. 6]", "baseRate": "10%", "baseFloat": 0.1, "threshold": "₹2,500", "threshFloat": 2500.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "No", "form": "140, 144", "note": ""}, {"code": "1067", "type": "TDS", "cat": "ANY", "nature": "Salary / remuneration / commission / bonus / interest paid to partner of a firm", "deductor": "Any person, being a firm", "payee": "Resident", "oldSec": "194T", "newSec": "393(3) [Table: Sl. No. 7]", "baseRate": "10%", "baseFloat": 0.1, "threshold": "₹20,000", "threshFloat": 20000.0, "noPan": "20%", "noPanFloat": 0.2, "sec197": "Yes", "form": "140, 144", "note": ""}, {"code": "1068", "type": "TCS", "cat": "TCS", "nature": "TCS — Sale of alcoholic liquor for human consumption", "deductor": "Seller", "payee": "Buyer", "oldSec": "206C(1)(a)", "newSec": "394(1) [Table: Sl. No. 1]", "baseRate": "1%", "baseFloat": 0.01, "threshold": "Nil", "threshFloat": 0.0, "noPan": "5%", "noPanFloat": 0.05, "sec197": "Yes — Buyer files Form 27C declaration u/s 197A(1C) / 206C(1A) for nil TCS", "form": "143", "note": ""}, {"code": "1069", "type": "TCS", "cat": "TCS", "nature": "TCS — Sale of tendu leaves", "deductor": "Seller", "payee": "Buyer", "oldSec": "206C(1)(b)", "newSec": "394(1) [Table: Sl. No. 2]", "baseRate": "5%", "baseFloat": 0.05, "threshold": "Nil", "threshFloat": 0.0, "noPan": "10%", "noPanFloat": 0.1, "sec197": "Yes — Buyer files Form 27C declaration u/s 197A(1C) / 206C(1A) for nil TCS", "form": "143", "note": ""}, {"code": "1070", "type": "TCS", "cat": "TCS", "nature": "TCS — Sale of timber obtained under a forest lease", "deductor": "Seller", "payee": "Buyer", "oldSec": "206C(1)(c)", "newSec": "394(1) [Table: Sl. No. 3]", "baseRate": "2.5%", "baseFloat": 0.025, "threshold": "Nil", "threshFloat": 0.0, "noPan": "5%", "noPanFloat": 0.05, "sec197": "Yes — Buyer files Form 27C declaration u/s 197A(1C) / 206C(1A) for nil TCS", "form": "143", "note": ""}, {"code": "1071", "type": "TCS", "cat": "TCS", "nature": "TCS — Sale of timber obtained by any mode other than a forest lease", "deductor": "Seller", "payee": "Buyer", "oldSec": "206C(1)(c)", "newSec": "394(1) [Table: Sl. No. 3]", "baseRate": "2.5%", "baseFloat": 0.025, "threshold": "Nil", "threshFloat": 0.0, "noPan": "5%", "noPanFloat": 0.05, "sec197": "Yes — Buyer files Form 27C declaration u/s 197A(1C) / 206C(1A) for nil TCS", "form": "143", "note": ""}, {"code": "1072", "type": "TCS", "cat": "TCS", "nature": "TCS — Sale of other forest produce (not timber/tendu) obtained under a forest lease", "deductor": "Seller", "payee": "Buyer", "oldSec": "206C(1)(c)", "newSec": "394(1) [Table: Sl. No. 3]", "baseRate": "2.5%", "baseFloat": 0.025, "threshold": "Nil", "threshFloat": 0.0, "noPan": "5%", "noPanFloat": 0.05, "sec197": "Yes — Buyer files Form 27C declaration u/s 197A(1C) / 206C(1A) for nil TCS", "form": "143", "note": ""}, {"code": "1073", "type": "TCS", "cat": "TCS", "nature": "TCS — Sale of scrap", "deductor": "Seller", "payee": "Buyer", "oldSec": "206C(1)(d)", "newSec": "394(1) [Table: Sl. No. 4]", "baseRate": "1%", "baseFloat": 0.01, "threshold": "Nil", "threshFloat": 0.0, "noPan": "5%", "noPanFloat": 0.05, "sec197": "Yes — Buyer files Form 27C declaration u/s 197A(1C) / 206C(1A) for nil TCS", "form": "143", "note": ""}, {"code": "1074", "type": "TCS", "cat": "TCS", "nature": "TCS — Sale of minerals - coal, lignite or iron ore", "deductor": "Seller", "payee": "Buyer / Lessee", "oldSec": "206C(1C)", "newSec": "394(1) [Table: Sl. No. 5]", "baseRate": "1%", "baseFloat": 0.01, "threshold": "Nil", "threshFloat": 0.0, "noPan": "5%", "noPanFloat": 0.05, "sec197": "Yes — Buyer files Form 27C declaration u/s 197A(1C) / 206C(1A) for nil TCS", "form": "143", "note": ""}, {"code": "1075", "type": "TCS", "cat": "TCS", "nature": "TCS — Sale of motor vehicle exceeding threshold limit", "deductor": "Seller", "payee": "Buyer", "oldSec": "206C(1F)", "newSec": "394(1) [Table: Sl. No. 6.D(a)]", "baseRate": "1%", "baseFloat": 0.01, "threshold": "₹10 Lakh", "threshFloat": 1000000.0, "noPan": "5%", "noPanFloat": 0.05, "sec197": "No — Sec 197A exemption not available for this TCS sub-section", "form": "143", "note": ""}, {"code": "1076", "type": "TCS", "cat": "TCS", "nature": "TCS — Sale of wrist watch exceeding threshold limit", "deductor": "Seller", "payee": "Buyer", "oldSec": "206C(1F)", "newSec": "394(1) [Table: Sl. No. 6.D(b)]", "baseRate": "1%", "baseFloat": 0.01, "threshold": "₹2 Lakh", "threshFloat": 200000.0, "noPan": "5%", "noPanFloat": 0.05, "sec197": "No — Sec 197A exemption not available for this TCS sub-section", "form": "143", "note": ""}, {"code": "1077", "type": "TCS", "cat": "TCS", "nature": "TCS — Sale of art piece (antiques, painting, sculpture) exceeding threshold limit", "deductor": "Seller", "payee": "Buyer", "oldSec": "206C(1F)", "newSec": "394(1) [Table: Sl. No. 6.D(b)]", "baseRate": "1%", "baseFloat": 0.01, "threshold": "₹2 Lakh", "threshFloat": 200000.0, "noPan": "5%", "noPanFloat": 0.05, "sec197": "No — Sec 197A exemption not available for this TCS sub-section", "form": "143", "note": ""}, {"code": "1078", "type": "TCS", "cat": "TCS", "nature": "TCS — Sale of collectibles (coin, stamp) exceeding threshold limit", "deductor": "Seller", "payee": "Buyer", "oldSec": "206C(1F)", "newSec": "394(1) [Table: Sl. No. 6.D(b)]", "baseRate": "1%", "baseFloat": 0.01, "threshold": "₹2 Lakh", "threshFloat": 200000.0, "noPan": "5%", "noPanFloat": 0.05, "sec197": "No — Sec 197A exemption not available for this TCS sub-section", "form": "143", "note": ""}, {"code": "1079", "type": "TCS", "cat": "TCS", "nature": "TCS — Sale of yacht / rowing boat / canoe / helicopter exceeding threshold limit", "deductor": "Seller", "payee": "Buyer", "oldSec": "206C(1F)", "newSec": "394(1) [Table: Sl. No. 6.D(b)]", "baseRate": "1%", "baseFloat": 0.01, "threshold": "₹2 Lakh", "threshFloat": 200000.0, "noPan": "5%", "noPanFloat": 0.05, "sec197": "No — Sec 197A exemption not available for this TCS sub-section", "form": "143", "note": ""}, {"code": "1080", "type": "TCS", "cat": "TCS", "nature": "TCS — Sale of pair of sunglasses exceeding threshold limit", "deductor": "Seller", "payee": "Buyer", "oldSec": "206C(1F)", "newSec": "394(1) [Table: Sl. No. 6.D(b)]", "baseRate": "1%", "baseFloat": 0.01, "threshold": "₹2 Lakh", "threshFloat": 200000.0, "noPan": "5%", "noPanFloat": 0.05, "sec197": "No — Sec 197A exemption not available for this TCS sub-section", "form": "143", "note": ""}, {"code": "1081", "type": "TCS", "cat": "TCS", "nature": "TCS — Sale of handbag or purse exceeding threshold limit", "deductor": "Seller", "payee": "Buyer", "oldSec": "206C(1F)", "newSec": "394(1) [Table: Sl. No. 6.D(b)]", "baseRate": "1%", "baseFloat": 0.01, "threshold": "₹2 Lakh", "threshFloat": 200000.0, "noPan": "5%", "noPanFloat": 0.05, "sec197": "No — Sec 197A exemption not available for this TCS sub-section", "form": "143", "note": ""}, {"code": "1082", "type": "TCS", "cat": "TCS", "nature": "TCS — Sale of pair of shoes exceeding threshold limit", "deductor": "Seller", "payee": "Buyer", "oldSec": "206C(1F)", "newSec": "394(1) [Table: Sl. No. 6.D(b)]", "baseRate": "1%", "baseFloat": 0.01, "threshold": "₹2 Lakh", "threshFloat": 200000.0, "noPan": "5%", "noPanFloat": 0.05, "sec197": "No — Sec 197A exemption not available for this TCS sub-section", "form": "143", "note": ""}, {"code": "1083", "type": "TCS", "cat": "TCS", "nature": "TCS — Sale of sportswear and equipment (golf kit, ski-wear) exceeding threshold limit", "deductor": "Seller", "payee": "Buyer", "oldSec": "206C(1F)", "newSec": "394(1) [Table: Sl. No. 6.D(b)]", "baseRate": "1%", "baseFloat": 0.01, "threshold": "₹2 Lakh", "threshFloat": 200000.0, "noPan": "5%", "noPanFloat": 0.05, "sec197": "No — Sec 197A exemption not available for this TCS sub-section", "form": "143", "note": ""}, {"code": "1084", "type": "TCS", "cat": "TCS", "nature": "TCS — Sale of home theatre system exceeding threshold limit", "deductor": "Seller", "payee": "Buyer", "oldSec": "206C(1F)", "newSec": "394(1) [Table: Sl. No. 6.D(b)]", "baseRate": "1%", "baseFloat": 0.01, "threshold": "₹2 Lakh", "threshFloat": 200000.0, "noPan": "5%", "noPanFloat": 0.05, "sec197": "No — Sec 197A exemption not available for this TCS sub-section", "form": "143", "note": ""}, {"code": "1085", "type": "TCS", "cat": "TCS", "nature": "TCS — Sale of horse for horse racing / polo exceeding threshold limit", "deductor": "Seller", "payee": "Buyer", "oldSec": "206C(1F)", "newSec": "394(1) [Table: Sl. No. 6.D(b)]", "baseRate": "1%", "baseFloat": 0.01, "threshold": "₹2 Lakh", "threshFloat": 200000.0, "noPan": "5%", "noPanFloat": 0.05, "sec197": "No — Sec 197A exemption not available for this TCS sub-section", "form": "143", "note": ""}, {"code": "1086", "type": "TCS", "cat": "TCS", "nature": "TCS — LRS remittance for education or medical treatment", "deductor": "Authorised dealer", "payee": "Remitter", "oldSec": "206C(1G)(a)", "newSec": "394(1) [Table: Sl. No. 7.D(a)]", "baseRate": "0.5%", "baseFloat": 0.005, "threshold": "₹7 Lakh", "threshFloat": 700000.0, "noPan": "5%", "noPanFloat": 0.05, "sec197": "No — Sec 197A exemption not available for this TCS sub-section", "form": "143", "note": ""}, {"code": "1087", "type": "TCS", "cat": "TCS", "nature": "TCS — LRS remittance for purposes other than education / medical", "deductor": "Authorised dealer", "payee": "Remitter", "oldSec": "206C(1G)(b)", "newSec": "394(1) [Table: Sl. No. 7.D(b)]", "baseRate": "20%", "baseFloat": 0.2, "threshold": "₹7 Lakh", "threshFloat": 700000.0, "noPan": "40%", "noPanFloat": 0.4, "sec197": "No — Sec 197A exemption not available for this TCS sub-section", "form": "143", "note": ""}, {"code": "1088", "type": "TCS", "cat": "TCS", "nature": "TCS — Sale of overseas tour programme package - amount up to ₹10 lakh", "deductor": "Seller", "payee": "Buyer", "oldSec": "206C(1G)", "newSec": "394(1) [Table: Sl. No. 8.D(a)]", "baseRate": "5%", "baseFloat": 0.05, "threshold": "₹7 Lakh", "threshFloat": 700000.0, "noPan": "10%", "noPanFloat": 0.1, "sec197": "No — Sec 197A exemption not available for this TCS sub-section", "form": "143", "note": ""}, {"code": "1089", "type": "TCS", "cat": "TCS", "nature": "TCS — Sale of overseas tour programme package - amount above ₹10 lakh", "deductor": "Seller", "payee": "Buyer", "oldSec": "206C(1G)", "newSec": "394(1) [Table: Sl. No. 8.D(b)]", "baseRate": "20%", "baseFloat": 0.2, "threshold": "₹7 Lakh", "threshFloat": 700000.0, "noPan": "40%", "noPanFloat": 0.4, "sec197": "No — Sec 197A exemption not available for this TCS sub-section", "form": "143", "note": ""}, {"code": "1090", "type": "TCS", "cat": "TCS", "nature": "TCS — Use of parking lot for business (excluding mineral oil mining)", "deductor": "Seller / Licensor", "payee": "Buyer / Lessee", "oldSec": "206C(1C)", "newSec": "394(1) [Table: Sl. No. 9]", "baseRate": "2%", "baseFloat": 0.02, "threshold": "Nil", "threshFloat": 0.0, "noPan": "5%", "noPanFloat": 0.05, "sec197": "Yes — Buyer files Form 27C declaration u/s 197A(1C) / 206C(1A) for nil TCS", "form": "143", "note": ""}, {"code": "1091", "type": "TCS", "cat": "TCS", "nature": "TCS — Use of toll plaza for business (excluding mineral oil mining)", "deductor": "Seller / Licensor", "payee": "Buyer / Lessee", "oldSec": "206C(1C)", "newSec": "394(1) [Table: Sl. No. 9]", "baseRate": "2%", "baseFloat": 0.02, "threshold": "Nil", "threshFloat": 0.0, "noPan": "5%", "noPanFloat": 0.05, "sec197": "Yes — Buyer files Form 27C declaration u/s 197A(1C) / 206C(1A) for nil TCS", "form": "143", "note": ""}, {"code": "1092", "type": "TCS", "cat": "TCS", "nature": "TCS — Use of mine or quarry for business (excluding mineral oil mining)", "deductor": "Seller / Licensor", "payee": "Buyer / Lessee", "oldSec": "206C(1C)", "newSec": "394(1) [Table: Sl. No. 9]", "baseRate": "2%", "baseFloat": 0.02, "threshold": "Nil", "threshFloat": 0.0, "noPan": "5%", "noPanFloat": 0.05, "sec197": "Yes — Buyer files Form 27C declaration u/s 197A(1C) / 206C(1A) for nil TCS", "form": "143", "note": ""}];
+let activeFilter = 'all';
+let panOpen = false;
+let panYes = true;
+
+// ── INIT ────────────────────────────────────────────────────────────────────
+async function init(){
+  await loadData();
+  hideLoadingState();
+  // Set firm branding
+  if(CONFIG.FIRM_NAME && CONFIG.FIRM_NAME !== 'Your Firm Name'){
+    document.getElementById('firm_brand').textContent = CONFIG.FIRM_NAME.toUpperCase();
+  }
+  renderTable(DATA);
+  buildCalcDropdown();
+  // Build TY dropdown
+  buildTyDropdown();
+  // Auto-set current TY based on today
+  const todayInit = new Date(); todayInit.setHours(0,0,0,0);
+  const defaultTY = getTaxYearFromDate(todayInit);
+  setTaxYear(defaultTY, true);
+  // Set today as default payment date
+  const yyyy = todayInit.getFullYear();
+  const mm = String(todayInit.getMonth()+1).padStart(2,'0');
+  const dd = String(todayInit.getDate()).padStart(2,'0');
+  document.getElementById('c_date').value = `${yyyy}-${mm}-${dd}`;
+  onDateChange();
+  // pre-select first section
+  if(DATA.length){ selectCode(DATA[0].code); }
+  setHeaderHeight();
+  window.addEventListener('resize', setHeaderHeight);
+}
+
+function setHeaderHeight(){
+  const hdr = document.querySelector('.header');
+  if(hdr){
+    document.documentElement.style.setProperty('--header-h', hdr.offsetHeight + 'px');
+  }
+}
+
+// ── TAB SWITCH ───────────────────────────────────────────────────────────────
+function switchTab(t){
+  ['chart','calc'].forEach(n=>{
+    document.getElementById('tab-'+n).style.display = n===t?'':'none';
+  });
+  document.querySelectorAll('.tab').forEach((el,i)=>{
+    el.classList.toggle('active',['chart','calc'][i]===t);
+  });
+}
+
+// ── FILTERS ─────────────────────────────────────────────────────────────────
+function setChip(el){
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  activeFilter = el.dataset.cat;
+  applyFilters();
+}
+function applyFilters(){
+  const q = document.getElementById('searchInput').value.toLowerCase().trim();
+  let filtered = DATA;
+  if(activeFilter !== 'all') filtered = filtered.filter(r=>r.cat===activeFilter);
+  if(q) filtered = filtered.filter(r=>
+    r.code.includes(q) || r.nature.toLowerCase().includes(q) ||
+    r.oldSec.toLowerCase().includes(q) || r.newSec.toLowerCase().includes(q) ||
+    r.deductor.toLowerCase().includes(q) || r.payee.toLowerCase().includes(q) ||
+    r.baseRate.toLowerCase().includes(q) || r.form.toLowerCase().includes(q)
+  );
+  renderTable(filtered, q);
+  document.getElementById('resultsCount').textContent = filtered.length + ' result' + (filtered.length!==1?'s':'');
+}
+function hl(text, q){
+  if(!q) return esc(text);
+  const re = new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+  return esc(text).replace(re,'<mark>$1</mark>');
+}
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') }
+
+// ── TABLE RENDER ─────────────────────────────────────────────────────────────
+function catBadge(cat){
+  const map={SAL:['tb-sal','Salary'],RES:['tb-res','Resident'],NR:['tb-nr','Non-Res'],ANY:['tb-any','Any Person'],TCS:['tb-tcs','TCS']};
+  const [cls,lbl]=map[cat]||['tb-res',cat];
+  return `<span class="type-badge ${cls}">${lbl}</span>`;
+}
+function cessBadge(cat){
+  if(cat==='NR'){
+    return `<span class="cess-yes" title="Surcharge + 4% H&E Cess applicable (Non-Resident TDS only)">✓ Applicable</span>`;
+  }
+  if(cat==='SAL'){
+    return `<span class="cess-sal" title="Surcharge & Cess applied via estimated annual income slab (Sec 392)">⚠ Via Slab</span>`;
+  }
+  return `<span class="cess-nil" title="No Surcharge. No Cess. Base rate only at deduction point.">✗ Nil</span>`;
+}
+function rateColor(r){
+  if(!r||r.includes('Slab')||r.includes('Force')) return 'rate-slab';
+  const m=r.match(/([\d.]+)%/);
+  if(!m) return 'rate-slab';
+  const v=parseFloat(m[1]);
+  return v>=20?'rate-high':v>=10?'rate-med':v>=3?'rate-med':'rate-low';
+}
+function renderTable(rows, q=''){
+  window._currentFilteredData = rows; // track for PDF export
+  const tbody = document.getElementById('tableBody');
+  if(!rows.length){
+    tbody.innerHTML=`<tr><td colspan="10"><div class="empty"><div class="empty-icon">🔍</div><div>No sections found</div></div></td></tr>`;
+    return;
+  }
+  tbody.innerHTML = rows.map(r=>`
+    <tr onclick="openPanel('${r.code}')">
+      <td><span class="td-code">${hl(r.code,q)}</span></td>
+      <td>${catBadge(r.cat)}</td>
+      <td class="td-nature">${hl(r.nature,q)}</td>
+      <td style="text-align:center"><span class="td-thresh">${esc(r.threshold)}</span></td>
+      <td><span class="td-rate ${rateColor(r.baseRate)}">${esc(r.baseRate)}</span></td>
+      <td><span class="td-rate rate-high" style="font-size:12px">${esc(r.noPan)}</span></td>
+      <td style="text-align:center">${cessBadge(r.cat)}</td>
+      <td style="text-align:center">${r.sec197.toLowerCase().startsWith('yes')?'<span style="color:var(--green);font-size:13px">✓</span>':'<span style="color:var(--muted);font-size:13px">—</span>'}</td>
+      <td style="text-align:center"><span class="td-form">${esc(r.form)}</span></td>
+      <td class="td-sec">${hl(r.newSec,q)}</td>
+      <td><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:var(--oldsec-color);background:var(--surface2);padding:2px 6px;border-radius:4px;border:1px solid var(--border2)">${hl(r.oldSec,q)}</span></td>
+    </tr>`).join('');
+}
+
+// ── DETAIL PANEL ─────────────────────────────────────────────────────────────
+function openPanel(code){
+  const r = DATA.find(d=>d.code===code);
+  if(!r) return;
+  document.getElementById('panel-code').textContent = r.code;
+  document.getElementById('panel-nature').textContent = r.nature;
+  document.getElementById('panel-code-badge').innerHTML = catBadge(r.cat);
+  const rc=rateColor(r.baseRate);
+  document.getElementById('p-rate').innerHTML=`<span class="${rc}">${esc(r.baseRate)}</span>`;
+  document.getElementById('p-nopan').textContent = r.noPan;
+  document.getElementById('p-newsec').textContent = r.newSec;
+  document.getElementById('p-thresh').textContent = r.threshold;
+  document.getElementById('p-ded').textContent = r.deductor;
+  document.getElementById('p-payee').textContent = r.payee;
+  document.getElementById('p-form').textContent = r.form;
+  const s197 = r.sec197.toLowerCase().startsWith('yes') ? '✓ Yes — Eligible (Form 13 → Sec 392B IT Act 2025)' : '✗ No — Not available for this section';
+  document.getElementById('p-sec197').innerHTML = `<span style="color:${r.sec197.toLowerCase().startsWith('yes')?'var(--green)':'var(--muted)'}">${s197}</span>`;
+  document.getElementById('p-oldsec').textContent = r.oldSec + '  (IT Act 1961 — reference only)';
+  if(r.note){
+    document.getElementById('p-note').textContent = r.note;
+    document.getElementById('p-note-wrap').style.display='';
+  } else document.getElementById('p-note-wrap').style.display='none';
+
+  document.getElementById('detailPanel').classList.add('open');
+  document.getElementById('overlay').classList.add('show');
+  panOpen=true;
+}
+function closePanel(){
+  document.getElementById('detailPanel').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+  panOpen=false;
+}
+
+function goToCalculator(){
+  const code = document.getElementById('panel-code').textContent.trim();
+  if(!code || code==='—') return;
+  closePanel();
+  // Switch to Calculator tab
+  switchTab('calc');
+  // Pre-select this code in the custom dropdown
+  selectCode(code);
+  // Scroll to top of calculator
+  window.scrollTo({top:0, behavior:'smooth'});
+  // Brief highlight flash on the dropdown to confirm selection
+  const sel = document.getElementById('sc_selected');
+  if(sel){
+    sel.style.boxShadow = '0 0 0 3px rgba(59,130,246,.6)';
+    setTimeout(()=>{ sel.style.boxShadow = ''; }, 1200);
+  }
+}
+
+// ── CALCULATOR ───────────────────────────────────────────────────────────────
+// ── CUSTOM SEARCHABLE DROPDOWN ─────────────────────────────────────────────
+let dropdownOpen = false;
+let currentCode = '';
+const CAT_STYLE_MAP = {
+  SAL:['tb-sal','Salary'], RES:['tb-res','Resident'],
+  NR:['tb-nr','Non-Res'],  ANY:['tb-any','Any Person'], TCS:['tb-tcs','TCS']
+};
+
+function buildCalcDropdown(){
+  renderDropdownList(DATA);
+  // Close on outside click
+  document.addEventListener('click', e=>{
+    if(!document.getElementById('sc_dropdown').contains(e.target)) closeDropdown();
+  });
+  // Keyboard nav
+  document.getElementById('sc_search').addEventListener('keydown', onDropdownKey);
+}
+
+function renderDropdownList(items){
+  const list = document.getElementById('sc_list');
+  document.getElementById('sc_count').textContent =
+    items.length + ' section' + (items.length!==1?'s':'') + (items.length<88?' found':'');
+  if(!items.length){
+    list.innerHTML='<div class="sc-no-results">No sections match your search</div>';
+    return;
+  }
+  list.innerHTML = items.map(r=>{
+    const [cls,lbl] = CAT_STYLE_MAP[r.cat]||['tb-res',r.cat];
+    const sel = r.code===currentCode ? ' selected' : '';
+    return `<div class="sc-item${sel}" data-code="${r.code}" onclick="selectCode('${r.code}')">
+      <span class="sc-item-code">${r.code}</span>
+      <div class="sc-item-right">
+        <span class="type-badge ${cls} sc-item-cat">${lbl}</span>
+        <span class="sc-item-nature">${esc(r.nature)}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function filterDropdown(){
+  const q = document.getElementById('sc_search').value.toLowerCase().trim();
+  const filtered = q ? DATA.filter(r=>
+    r.code.includes(q) ||
+    r.nature.toLowerCase().includes(q) ||
+    r.oldSec.toLowerCase().includes(q) ||
+    r.newSec.toLowerCase().includes(q) ||
+    r.deductor.toLowerCase().includes(q) ||
+    r.cat.toLowerCase().includes(q) ||
+    r.baseRate.toLowerCase().includes(q)
+  ) : DATA;
+  renderDropdownList(filtered);
+}
+
+function toggleDropdown(){
+  dropdownOpen ? closeDropdown() : openDropdown();
+}
+
+function openDropdown(){
+  dropdownOpen = true;
+  document.getElementById('sc_panel').style.display = '';
+  document.getElementById('sc_dropdown').classList.add('open');
+  setTimeout(()=>document.getElementById('sc_search').focus(), 50);
+  // Scroll selected item into view
+  setTimeout(()=>{
+    const sel = document.querySelector('.sc-item.selected');
+    if(sel) sel.scrollIntoView({block:'nearest'});
+  }, 80);
+}
+
+function closeDropdown(){
+  dropdownOpen = false;
+  document.getElementById('sc_panel').style.display = 'none';
+  document.getElementById('sc_dropdown').classList.remove('open');
+}
+
+function clearSearch(){
+  document.getElementById('sc_search').value = '';
+  filterDropdown();
+  document.getElementById('sc_search').focus();
+}
+
+function selectCode(code){
+  currentCode = code;
+  const r = DATA.find(d=>d.code===code);
+  if(!r) return;
+  document.getElementById('sc_sel_code').textContent = r.code;
+  document.getElementById('sc_sel_nature').textContent = r.nature;
+  closeDropdown();
+  calcUpdate();
+}
+
+function onDropdownKey(e){
+  const items = document.querySelectorAll('.sc-item');
+  const focused = document.querySelector('.sc-item.focused');
+  let idx = [...items].indexOf(focused);
+  if(e.key==='ArrowDown'){
+    e.preventDefault();
+    if(focused) focused.classList.remove('focused');
+    const next = items[Math.min(idx+1, items.length-1)];
+    if(next){next.classList.add('focused');next.scrollIntoView({block:'nearest'});}
+  } else if(e.key==='ArrowUp'){
+    e.preventDefault();
+    if(focused) focused.classList.remove('focused');
+    const prev = items[Math.max(idx-1,0)];
+    if(prev){prev.classList.add('focused');prev.scrollIntoView({block:'nearest'});}
+  } else if(e.key==='Enter'){
+    const target = focused || items[0];
+    if(target) selectCode(target.dataset.code);
+  } else if(e.key==='Escape'){
+    closeDropdown();
+  }
+}
+function setPAN(yes){
+  panYes=yes;
+  document.getElementById('r_yes').classList.toggle('active',yes);
+  document.getElementById('r_no').classList.toggle('active',!yes);
+  calcUpdate();
+}
+function fmt(n){ return '₹'+Math.round(n).toLocaleString('en-IN') }
+function fmtD(n){
+  if(n===0) return '₹0';
+  return '₹'+n.toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2});
+}
+function calcUpdate(){
+  const code=currentCode;
+  const r=DATA.find(d=>d.code===code);
+  if(!r){
+    document.getElementById('c_section_info').style.display='none';
+    document.getElementById('calc_placeholder').style.display='';
+    document.getElementById('calc_output').style.display='none';
+    document.getElementById('nr_section').style.display='none';
+    return;
+  }
+
+  // Section info
+  document.getElementById('c_section_info').style.display='';
+  document.getElementById('si_newsec').textContent=r.newSec;
+  document.getElementById('si_oldsec').textContent=r.oldSec+' (IT 1961 ref)';
+  document.getElementById('si_ded').textContent=r.deductor;
+  document.getElementById('si_thresh').textContent=r.threshold;
+  const isNR = r.cat==='NR';
+  const isSal = r.cat==='SAL';
+  document.getElementById('si_sc').innerHTML = isNR ? '<span style="color:var(--nr)">✓ Surcharge + 4% H&amp;E Cess applicable</span>' : isSal ? '<span style="color:var(--sal)">⚠ Via estimated income slab (Sec 392)</span>' : '<span style="color:var(--muted)">✗ Nil — base rate only at deduction point</span>';
+  document.getElementById('si_form').textContent = 'Form '+r.form+' | Challan 281';
+  document.getElementById('nr_section').style.display = isNR?'':'none';
+
+  const amt = parseFloat(document.getElementById('c_amount').value)||0;
+  const thresh = r.threshFloat;
+  const applicable = amt > thresh;
+  const appliedRate = panYes ? r.baseFloat : r.noPanFloat;
+  const baseTDS = applicable ? Math.round(amt * appliedRate * 100)/100 : 0;
+
+  // Surcharge
+  let sc=0, cess=0, scNote='';
+  if(isNR && applicable && baseTDS>0){
+    const income = parseFloat(document.getElementById('c_income').value)||0;
+    const payeeType = document.getElementById('c_payeetype').value;
+    const isCG = ['1052','1054'].includes(code) || r.nature.toLowerCase().includes('capital gain');
+    const isDiv = r.nature.toLowerCase().includes('dividend') && isNR;
+    let scRate=0;
+    if(payeeType==='firm') scRate=0.125;
+    else if(payeeType==='domco') scRate = income>1e10?0.12:income>1e7?0.07:0;
+    else if(payeeType==='forco') scRate = income>1e10?0.05:income>1e7?0.02:0;
+    else { // Individual/HUF/AOP
+      if(isCG||isDiv) scRate = income>1e7?0.15:income>5e6?0.10:0;
+      else scRate = income>5e7?0.37:income>2e7?0.25:income>1e7?0.15:income>5e6?0.10:0;
+    }
+    sc = Math.round(baseTDS*scRate*100)/100;
+    cess = Math.round((baseTDS+sc)*0.04*100)/100;
+    if(scRate>0) scNote=`Surcharge rate: ${(scRate*100).toFixed(1)}% applied. H&E Cess: 4% on (TDS + Surcharge). Verify DTAA / marginal relief if applicable.`;
+    else scNote='Income below surcharge threshold — surcharge is Nil. H&E Cess still applies: 4% on TDS.';
+    if(scNote) cess = Math.round(baseTDS*0.04*100)/100;
+    cess = Math.round((baseTDS+sc)*0.04*100)/100;
+  } else if(isSal){
+    scNote='For Salary TDS (Sec 392): Surcharge + Cess applied on estimated annual income. Consult slab-based computation.';
+  }
+
+  const total = baseTDS+sc+cess;
+  const net = amt - total;
+  const effRate = amt>0 ? (total/amt*100).toFixed(3)+'%' : '—';
+
+  // Render
+  document.getElementById('calc_placeholder').style.display='none';
+  document.getElementById('calc_output').style.display='';
+
+  const appBox = document.getElementById('app_box');
+  if(applicable){
+    appBox.className='applicability app-yes';
+    appBox.innerHTML=`<span style="font-size:20px">✅</span> TDS/TCS Applicable — Amount ₹${amt.toLocaleString('en-IN')} exceeds threshold ${r.threshold}`;
+  } else {
+    appBox.className='applicability app-no';
+    appBox.innerHTML=`<span style="font-size:20px">❌</span> TDS/TCS NOT required — Amount ₹${amt.toLocaleString('en-IN')} is below threshold ${r.threshold}`;
+  }
+
+  const rateDisplay = appliedRate>0 ? (appliedRate*100).toFixed(3)+'%' : r.baseRate;
+  document.getElementById('r_gross').textContent = fmtD(amt);
+  document.getElementById('r_rate').textContent = rateDisplay + (panYes?'':' (No PAN)');
+  document.getElementById('r_base').textContent = fmtD(baseTDS);
+  document.getElementById('r_sc').innerHTML = isNR ? `<span class="result-value amber">${fmtD(sc)}</span>` : '<span class="result-value-na">N/A — Resident</span>';
+  document.getElementById('r_cess').innerHTML = isNR ? `<span class="result-value amber">${fmtD(cess)}</span>` : '<span class="result-value-na">N/A — Resident</span>';
+  document.getElementById('r_total').textContent = fmtD(total);
+  document.getElementById('r_net').textContent = fmtD(net);
+
+  const scNoteEl = document.getElementById('sc_note');
+  if(scNote){scNoteEl.style.display='';scNoteEl.textContent='ℹ '+scNote;}
+  else scNoteEl.style.display='none';
+
+  // Date-based results
+  updateDateResults(baseTDS);
+}
+
+// ── TAX YEAR SELECTOR ───────────────────────────────────────────────────────
+let currentTY = '2026-27';
+const MIN_DATE = new Date('2026-04-01'); // IT Act 2025 effective date — no earlier dates allowed
+
+// Expandable: add new TY rows here each year
+const TY_LIST = [
+  { ty:'2026-27', start:new Date('2026-04-01'), end:new Date('2027-03-31'), status:'CURRENT' },
+  { ty:'2027-28', start:new Date('2027-04-01'), end:new Date('2028-03-31'), status:'FUTURE'  },
+  { ty:'2028-29', start:new Date('2028-04-01'), end:new Date('2029-03-31'), status:'FUTURE'  },
+  { ty:'2029-30', start:new Date('2029-04-01'), end:new Date('2030-03-31'), status:'FUTURE'  },
+  { ty:'2030-31', start:new Date('2030-04-01'), end:new Date('2031-03-31'), status:'FUTURE'  },
+];
+;
+// Auto-detect which TY is "CURRENT" based on today
+(function(){
+  const today = new Date(); today.setHours(0,0,0,0);
+  TY_LIST.forEach(t=>{
+    t.status = (today >= t.start && today <= t.end) ? 'CURRENT' : (today < t.start ? 'FUTURE' : 'PAST');
+  });
+})();
+
+function getTaxYearFromDate(d){
+  for(const t of TY_LIST){ if(d >= t.start && d <= t.end) return t.ty; }
+  // Extrapolate beyond listed years
+  const yr = d.getFullYear(), m = d.getMonth();
+  if(m >= 3) return `${yr}-${String(yr+1).slice(2)}`;
+  return `${yr-1}-${String(yr).slice(2)}`;
+}
+
+function buildTyDropdown(){
+  renderTyList(TY_LIST);
+  document.addEventListener('click', e=>{
+    if(!document.getElementById('ty_dd').contains(e.target)) closeTyDd();
+  });
+}
+
+function renderTyList(items){
+  const list = document.getElementById('ty_dd_list');
+  list.innerHTML = items.length ? items.map(t=>`
+    <div class="ty-dd-item${t.ty===currentTY?' active':''}" onclick="setTaxYear('${t.ty}')">
+      <span>TY ${t.ty}</span>
+      <span class="ty-status ty-status-${t.status==='CURRENT'?'current':'future'}">
+        ${t.status}
+      </span>
+    </div>`).join('') :
+    '<div style="padding:10px 14px;font-size:11px;color:var(--muted)">No match</div>';
+}
+
+function filterTyDd(){
+  const q = document.getElementById('ty_dd_search').value.toLowerCase().trim();
+  renderTyList(q ? TY_LIST.filter(t=>t.ty.includes(q) || ('ty '+t.ty).includes(q)) : TY_LIST);
+}
+
+function toggleTyDd(){
+  const dd = document.getElementById('ty_dd');
+  const panel = document.getElementById('ty_dd_panel');
+  if(dd.classList.contains('open')){
+    closeTyDd();
+  } else {
+    dd.classList.add('open');
+    panel.style.display='';
+    setTimeout(()=>document.getElementById('ty_dd_search').focus(),40);
+  }
+}
+
+function closeTyDd(){
+  document.getElementById('ty_dd').classList.remove('open');
+  document.getElementById('ty_dd_panel').style.display='none';
+  document.getElementById('ty_dd_search').value='';
+  renderTyList(TY_LIST);
+}
+
+function setTaxYear(ty, fromDateChange=false){
+  currentTY = ty;
+  document.getElementById('ty_dd_label').textContent = 'Tax Year ' + ty;
+  renderTyList(TY_LIST); // refresh active state
+  if(!fromDateChange) closeTyDd();
+  calcUpdate();
+}
+
+function getDueDate(payDate){
+  const m = payDate.getMonth(), y = payDate.getFullYear();
+  if(m === 2) return new Date(y, 3, 30); // March → 30 April
+  return new Date(y, m+1, 7);            // all other months → 7th next month
+}
+
+function onDateChange(){
+  const dateEl = document.getElementById('c_date');
+  const errEl  = document.getElementById('date_err');
+  const val = dateEl.value;
+
+  if(!val){
+    document.getElementById('c_ty_display').textContent='— select date above —';
+    errEl.style.display='none';
+    return;
+  }
+
+  const payDate = new Date(val);
+
+  // ── Enforce min date: 01-04-2026 ──────────────────────────────────────────
+  if(payDate < MIN_DATE){
+    errEl.style.display='';
+    dateEl.style.borderColor='var(--red)';
+    document.getElementById('c_ty_display').textContent='— invalid date —';
+    document.getElementById('date_results').style.display='none';
+    return;
+  }
+
+  // Valid date
+  errEl.style.display='none';
+  dateEl.style.borderColor='';
+
+  const detectedTY = getTaxYearFromDate(payDate);
+  document.getElementById('c_ty_display').textContent = 'TY ' + detectedTY;
+  setTaxYear(detectedTY, true);
+  closeTyDd();
+  calcUpdate();
+}
+
+function updateDateResults(baseTDS){
+  const dateEl = document.getElementById('c_date');
+  const dateResEl = document.getElementById('date_results');
+  if(!dateEl.value || baseTDS <= 0){ dateResEl.style.display='none'; return; }
+
+  const payDate = new Date(dateEl.value);
+  const today = new Date(); today.setHours(0,0,0,0);
+  const dueDate = getDueDate(payDate);
+  const msDay = 86400000;
+  const daysToOrFromDue = Math.round((dueDate - today) / msDay);
+  const overdue = daysToOrFromDue < 0;
+  const daysOverdue = overdue ? Math.abs(daysToOrFromDue) : 0;
+  // IT Act rule: part of a month = full month
+  // Count calendar months from due date to today
+  // Example: Due 7-May, Paid 1-Jun → May(part) + Jun(part) = 2 months
+  function calcMonths(from, to){
+    let months = (to.getFullYear() - from.getFullYear()) * 12
+                 + (to.getMonth() - from.getMonth());
+    // If there are any remaining days beyond whole months → add 1 more
+    const dayOfFrom = from.getDate();
+    const dayOfTo   = to.getDate();
+    if(dayOfTo > 0 || months === 0) months += 1; // any part of month = full month
+    return Math.max(1, months); // minimum 1 month if any delay at all
+  }
+  const monthsOverdue = overdue ? calcMonths(dueDate, today) : 0;
+
+  const fmt = d => d.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'});
+  const fmtD = n => '₹' + Math.round(n).toLocaleString('en-IN');
+
+  document.getElementById('d_paydate').textContent = fmt(payDate);
+  document.getElementById('d_ty').textContent = 'TY ' + currentTY;
+  document.getElementById('d_duedate').textContent = fmt(dueDate) + (payDate.getMonth()===2 ? ' (March → 30 Apr)' : ' (7th next month)');
+  document.getElementById('d_today').textContent = fmt(today);
+
+  const statusEl = document.getElementById('d_status');
+  const daysEl = document.getElementById('d_days');
+  const daysLabel = document.getElementById('d_days_label');
+  const dateBox = document.getElementById('date_box');
+  const intBox = document.getElementById('interest_box');
+
+  if(overdue){
+    statusEl.innerHTML = '<span class="date-val warn">⚠ OVERDUE — Deposit immediately</span>';
+    daysLabel.textContent = 'Days Overdue';
+    daysEl.className = 'date-val warn';
+    daysEl.textContent = daysOverdue + ' days';
+    dateBox.className = 'date-result-box overdue';
+
+    // Late Payment Interest @ 1.5% per month (part month = full month)
+    // Late Deduction Interest @ 1% is NOT calculated here — see note in UI
+    const latePay = Math.round(baseTDS * 0.015 * monthsOverdue * 100)/100;
+    const totalWithInt = Math.round((baseTDS + latePay) * 100)/100;
+    document.getElementById('i_paydate').textContent = fmt(payDate) + ' (deduction date)';
+    document.getElementById('i_duedate').textContent = fmt(dueDate);
+    document.getElementById('i_days').textContent = daysOverdue + ' day' + (daysOverdue===1?'':'s') + ' (from ' + fmt(dueDate) + ' to today)';
+    document.getElementById('i_months').textContent = monthsOverdue + ' month' + (monthsOverdue===1?'':'s') + ' × 1.5% = ' + (monthsOverdue*1.5).toFixed(1) + '%';
+    document.getElementById('i_late_pay').textContent = fmtD(latePay);
+    document.getElementById('i_total_with_int').textContent = fmtD(totalWithInt);
+    intBox.style.display='';
+  } else if(daysToOrFromDue === 0){
+    statusEl.innerHTML = '<span class="date-val amber">⚡ DUE TODAY — Deposit now</span>';
+    daysLabel.textContent = 'Due Today';
+    daysEl.className = 'date-val amber';
+    daysEl.textContent = 'Today is the last day';
+    dateBox.className = 'date-result-box';
+    intBox.style.display='none';
+  } else {
+    statusEl.innerHTML = '<span class="date-val ok">✅ Within time</span>';
+    daysLabel.textContent = 'Days Remaining';
+    daysEl.className = 'date-val ok';
+    daysEl.textContent = daysToOrFromDue + ' days remaining';
+    dateBox.className = 'date-result-box ok';
+    intBox.style.display='none';
+  }
+
+  dateResEl.style.display='';
+}
+
+// ── SHARED PDF HEADER DRAWER ─────────────────────────────────────────────────
+function drawPDFHeader(doc, W, H, ML, firm, currentTY, fmtDate, fmtTime, legends){
+  let hH = 0;
+
+  // Firm name strip
+  if(firm){
+    doc.setFillColor(15,32,64);
+    doc.rect(0, 0, W, 5.5, 'F');
+    doc.setFontSize(6.5); doc.setFont('helvetica','bold');
+    doc.setTextColor(147,197,253);
+    doc.text(firm.toUpperCase(), W/2, 3.9, {align:'center'});
+    hH = 5.5;
+  }
+
+  // Main navy bar
+  doc.setFillColor(27,58,107);
+  doc.rect(0, hH, W, 13, 'F');
+  doc.setFontSize(15); doc.setFont('helvetica','bold');
+  doc.setTextColor(255,255,255);
+  doc.text('TDS / TCS Rate Chart', W/2, hH + 6.5, {align:'center'});
+  doc.setFontSize(7); doc.setFont('helvetica','normal');
+  doc.setTextColor(147,197,253);
+  doc.text('Income Tax Act, 2025   |   Tax Year ' + currentTY + '   |   Finance Bill 2026   |   Printed: ' + fmtDate + ' ' + fmtTime,
+    W/2, hH + 11.5, {align:'center'});
+  hH += 13;
+
+  // Amber disclaimer bar
+  doc.setFillColor(254,243,199);
+  doc.rect(0, hH, W, 5.5, 'F');
+  doc.setFontSize(5.8); doc.setFont('helvetica','bold');
+  doc.setTextColor(120,53,15);
+  doc.text('BASE RATES ONLY  —  Surcharge & H&E Cess NOT deducted for Resident TDS & TCS  |  Non-Resident TDS (Form 144): Surcharge + 4% Cess DO apply  |  Verify from Official Gazette before filing',
+    W/2, hH + 3.5, {align:'center'});
+  hH += 5.5;
+
+  // Legend row
+  const legW = W / legends.length;
+  legends.forEach((l, i)=>{
+    const lx = i * legW;
+    doc.setFillColor(...l.bg);
+    doc.rect(lx, hH, legW, 5, 'F');
+    doc.setFillColor(...l.tc);
+    doc.rect(lx + 2, hH + 1.3, 3, 2.4, 'F');
+    doc.setFontSize(5.6); doc.setFont('helvetica','bold');
+    doc.setTextColor(...l.tc);
+    doc.text(l.label, lx + 7, hH + 3.2);
+    if(i < legends.length - 1){
+      doc.setDrawColor(200,200,200);
+      doc.setLineWidth(0.1);
+      doc.line(lx + legW, hH, lx + legW, hH + 5);
+    }
+  });
+  hH += 5;
+
+  return hH;
+}
+
+// ── PRINT PDF ────────────────────────────────────────────────────────────────
+function downloadPDF(){
+  const btn = document.getElementById('pdf_btn');
+  const btnText = document.getElementById('pdf_btn_text');
+  btnText.textContent = '⏳ Generating...';
+  btn.style.opacity = '0.7';
+  btn.disabled = true;
+
+  setTimeout(()=>{
+    try {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF({ orientation:'landscape', unit:'mm', format:'a4' });
+      const W = doc.internal.pageSize.getWidth();   // 297mm
+      const H = doc.internal.pageSize.getHeight();  // 210mm
+      const ML = 4, MR = 4; // margins — tight to match header
+      const CW = W - ML - MR; // content width 289mm
+      const now = new Date();
+      const fmtDate = now.toLocaleDateString('en-IN',{day:'2-digit',month:'long',year:'numeric'});
+      const fmtTime = now.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
+
+      // ══════════════════════════════════════════════════════════════════════
+      // HEADER — compact, clean, full-width
+      // ══════════════════════════════════════════════════════════════════════
+      const firm = (typeof CONFIG!=='undefined' && CONFIG.FIRM_NAME && CONFIG.FIRM_NAME !== 'Your Firm Name') ? CONFIG.FIRM_NAME : '';
+      const legends = [
+        {label:'TDS Salary  (Sec 392 / Form 138)',     bg:[220,252,231], tc:[21,128,61]},
+        {label:'TDS Resident  (Sec 393(1) / Form 140)',bg:[219,234,254], tc:[29,78,216]},
+        {label:'TDS Non-Res  (Sec 393(2) / Form 144)', bg:[204,251,241], tc:[15,118,110]},
+        {label:'TDS Any Person  (Sec 393(3))',          bg:[255,251,235], tc:[217,119,6]},
+        {label:'TCS  (Sec 394 / Form 143/27EQ)',        bg:[255,241,242], tc:[190,18,60]},
+      ];
+
+      // Draw header on page 1
+      const headerH = drawPDFHeader(doc, W, H, ML, firm, currentTY, fmtDate, fmtTime, legends);
+
+      // ══════════════════════════════════════════════════════════════════════
+      // TABLE DATA — use currently filtered rows (respects search/filter)
+      // ══════════════════════════════════════════════════════════════════════
+      const rows = window._currentFilteredData || DATA;
+      const catColors = {
+        SAL:{fill:[235,255,240], alt:[220,252,231], text:[21,128,61]},
+        RES:{fill:[239,246,255], alt:[219,234,254], text:[29,78,216]},
+        NR: {fill:[236,254,255], alt:[204,251,241], text:[15,118,110]},
+        ANY:{fill:[255,253,243], alt:[255,251,235], text:[217,119,6]},
+        TCS:{fill:[255,246,247], alt:[255,241,242], text:[190,18,60]},
+      };
+      const catLabels = {SAL:'Salary',RES:'Resident',NR:'Non-Res',ANY:'Any Person',TCS:'TCS'};
+
+      const tableRows = rows.map(r=>{
+        const cess = r.cess==='YES' ? 'Yes (NR)' : r.cess==='Via Slab' ? 'Via Slab' : 'Nil';
+        const sec197 = String(r.sec197||'').toLowerCase().startsWith('y') ? 'Yes' : 'No';
+        // Fix rupee symbol — replace unicode ₹ with Rs. for PDF safety
+        const fixRs = s => String(s||'').replace(/₹/g, 'Rs.').replace(/₹/g,'Rs.');
+        return [
+          r.code,
+          catLabels[r.cat]||r.cat,
+          r.nature,
+          fixRs(r.threshold),
+          r.baseRate,
+          r.noPan,
+          cess,
+          sec197,
+          r.form,
+          r.newSec,
+          r.oldSec,
+        ];
+      });
+
+      // Column widths — tableWidth:CW forces autostretch to fill full page
+      const cols = [
+        {header:'Code',                       w:11,  align:'center', bold:true},
+        {header:'Category',                   w:15,  align:'center'},
+        {header:'Nature of Payment / Receipt',w:80, valign:'middle'},
+        {header:'Threshold',                  w:17,  align:'center'},
+        {header:'Base Rate',                  w:34,  align:'center', bold:true},
+        {header:'No PAN Rate',                w:14,  align:'center', bold:true},
+        {header:'Cess',                       w:11,  align:'center'},
+        {header:'Sec 392B',                   w:9,   align:'center'},
+        {header:'Form',                       w:13,  align:'center', bold:true},
+        {header:'New Section (IT Act 2025)',  w:65, valign:'middle'},
+        {header:'Old Sec (1961 Ref)',         w:18,  align:'center'},
+      ]; // autoTable stretches proportionally via tableWidth:CW
+
+      // Track alternating rows per category group
+      let catRowCount = {};
+
+      doc.autoTable({
+        startY: headerH,
+        head: [cols.map(c=>c.header)],
+        body: tableRows,
+        theme: 'grid',
+        styles:{
+          fontSize: 6.2,
+          cellPadding: {top:2, bottom:2, left:1.8, right:1.8},
+          font: 'helvetica',
+          overflow: 'linebreak',
+          textColor: [15,23,42],
+          lineColor: [220,220,220],
+          lineWidth: 0.12,
+          minCellHeight: 7,
+          valign: 'middle',
+          halign: 'center',
+        },
+        headStyles:{
+          fillColor: [27,58,107],
+          textColor: [255,255,255],
+          fontStyle: 'bold',
+          fontSize: 6,
+          halign: 'center',
+          valign: 'middle',
+          cellPadding: {top:2, bottom:2, left:1.5, right:1.5},
+          minCellHeight: 8,
+        },
+        columnStyles: Object.fromEntries(cols.map((c,i)=>([
+          i, {
+            cellWidth: c.w,
+            halign: c.align || 'left',
+            valign: 'middle',
+            fontStyle: c.bold ? 'bold' : 'normal',
+            ...(i===10 ? {textColor:[120,130,145], fontStyle:'italic'} : {}),
+          }
+        ]))),
+        didParseCell: function(data){
+          if(data.section==='body'){
+            const row = rows[data.row.index];
+            if(!row) return;
+
+            // Force vertical middle + horizontal center on every body cell
+            data.cell.styles.valign = 'middle';
+            // Nature (col 2) and New Section (col 9) stay left-aligned but vertically centered
+            data.cell.styles.halign = (data.column.index===2 || data.column.index===9) ? 'left' : 'center';
+
+            const cat = row.cat;
+            const cc = catColors[cat];
+            if(!cc) return;
+
+            // Alternate lighter/slightly-darker per category for readability
+            const key = cat + '_' + data.row.index;
+            if(!catRowCount[cat]) catRowCount[cat] = 0;
+            // Use slightly different fill every other row within same cat group
+            const isAlt = data.row.index % 2 === 0;
+            data.cell.styles.fillColor = isAlt ? cc.fill : cc.alt;
+
+            // Category column — coloured text bold
+            if(data.column.index === 1){
+              data.cell.styles.textColor = cc.text;
+              data.cell.styles.fontStyle = 'bold';
+            }
+
+            // Base rate column — colour by rate level
+            if(data.column.index === 4){
+              const bfloat = parseFloat(row.baseFloat || 0);
+              const rateStr = String(row.baseRate || '').toLowerCase();
+              if(bfloat >= 0.20 || rateStr.includes('30%') || rateStr.includes('40%'))
+                data.cell.styles.textColor = [200,30,30];
+              else if(bfloat >= 0.10)
+                data.cell.styles.textColor = [200,100,0];
+              else if(bfloat > 0)
+                data.cell.styles.textColor = [15,118,110];
+              else
+                data.cell.styles.textColor = [100,40,180]; // slab/rates in force
+              data.cell.styles.fontStyle = 'bold';
+            }
+
+            // Cess column
+            if(data.column.index === 6){
+              const cv = String(data.cell.raw||'');
+              if(cv.includes('NR')) data.cell.styles.textColor = [15,118,110];
+              else if(cv.includes('Slab')) data.cell.styles.textColor = [200,100,0];
+              else data.cell.styles.textColor = [120,130,145];
+            }
+
+            // Sec 392B column
+            if(data.column.index === 7){
+              const sv = String(data.cell.raw||'');
+              data.cell.styles.textColor = sv==='Yes' ? [21,128,61] : [180,180,180];
+              data.cell.styles.fontStyle = sv==='Yes' ? 'bold' : 'normal';
+            }
+          }
+        },
+        showHead: 'everyPage',
+        didDrawPage: function(data){
+          const pg = doc.internal.getCurrentPageInfo().pageNumber;
+
+          // ── Redraw full header on every page ─────────────────────────────
+          drawPDFHeader(doc, W, H, ML, firm, currentTY, fmtDate, fmtTime, legends);
+
+          // ── Footer line ───────────────────────────────────────────────────
+          doc.setDrawColor(200,210,220);
+          doc.setLineWidth(0.2);
+          doc.line(ML, H-7, W-MR, H-7);
+          doc.setFontSize(5.8); doc.setFont('helvetica','normal');
+          doc.setTextColor(140,150,165);
+          doc.text('TDS / TCS Rate Chart  |  IT Act 2025  |  Tax Year ' + currentTY + '  |  Base rates only — verify before filing', ML, H-4.5);
+          doc.text(fmtDate, W/2, H-4.5, {align:'center'});
+        },
+        tableWidth: CW,
+        margin:{top: headerH, left: ML, right: MR, bottom: 10},
+      });
+
+      // ── DISCLAIMER on last page ───────────────────────────────────────────
+      const finalY = (doc.lastAutoTable && doc.lastAutoTable.finalY) ? doc.lastAutoTable.finalY + 4 : H - 20;
+      if(finalY < H - 15){
+        doc.setFontSize(5.8); doc.setFont('helvetica','normal');
+        doc.setTextColor(120,130,145);
+        doc.text(
+          'DISCLAIMER: Base rates only. Surcharge & 4% H&E Cess NOT included for Resident TDS & TCS at deduction point. Non-Resident TDS (Form 144): Surcharge + 4% Cess DO apply. Old IT Act 1961 section numbers shown for cross-reference only — IT Act 2025 is governing law from 1 April 2026. This document does not constitute legal or tax advice. Verify from Official Gazette / CBDT Circulars before filing.',
+          ML, finalY, {maxWidth: CW, lineHeightFactor:1.5}
+        );
+      }
+
+      // ── SAVE ─────────────────────────────────────────────────────────────
+      const yyyymmdd = now.toISOString().slice(0,10).replace(/-/g,'');
+      // Patch page footers — wipe and redraw cleanly with correct total
+      const totalPages = doc.internal.getNumberOfPages();
+      for(let ip = 1; ip <= totalPages; ip++){
+        doc.setPage(ip);
+        // Wipe entire footer strip
+        doc.setFillColor(255,255,255);
+        doc.rect(0, H-9, W, 9, 'F');
+        // Redraw footer line
+        doc.setDrawColor(200,210,220);
+        doc.setLineWidth(0.2);
+        doc.line(ML, H-7, W-MR, H-7);
+        // Redraw all footer text
+        doc.setFontSize(5.8); doc.setFont('helvetica','normal');
+        doc.setTextColor(140,150,165);
+        doc.text('TDS / TCS Rate Chart  |  IT Act 2025  |  Tax Year ' + currentTY + '  |  Base rates only — verify before filing', ML, H-4.5);
+        doc.text(fmtDate, W/2, H-4.5, {align:'center'});
+        doc.text('Page ' + ip + ' of ' + totalPages, W-MR, H-4.5, {align:'right'});
+      }
+
+      const filename = 'TDS_TCS_RateChart_TY' + currentTY.replace('-','_') + '_' + yyyymmdd + '.pdf';
+      doc.save(filename);
+
+      btnText.textContent = 'Downloaded!';
+      btn.style.background = 'linear-gradient(135deg,#15803D,#16a34a)';
+      document.getElementById('pdf_icon').innerHTML = '<polyline points="20 6 9 17 4 12"/>';
+      btn.style.opacity = '1';
+      setTimeout(()=>{
+        btnText.textContent = 'Download PDF';
+        btn.style.background = '';
+        document.getElementById('pdf_icon').innerHTML = '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>';
+        btn.disabled = false;
+      }, 2500);
+
+    } catch(err){
+      console.error('PDF generation error:', err);
+      btnText.textContent = '⚠ Error — retry';
+      btn.style.opacity = '1';
+      btn.disabled = false;
+      setTimeout(()=>{ btnText.textContent='Download PDF'; }, 3000);
+    }
+  }, 50);
+}
+
+// ── KEYBOARD ─────────────────────────────────────────────────────────────────
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&panOpen) closePanel();
+  if(e.key==='/'&&document.activeElement!==document.getElementById('searchInput')){
+    e.preventDefault();
+    document.getElementById('searchInput').focus();
+  }
+});
+
+init();
+</script>
+</body>
+</html>
